@@ -82,7 +82,10 @@ export default function RegionHintBanner() {
       <span className="text-lg shrink-0">✨</span>
       <div className="flex-1 min-w-0">
         <p className="font-bold text-amber-800 truncate">Advertise with Piitrade</p>
-        <p className="text-amber-600 text-xs truncate">Reach thousands of premium buyers across UAE, Uganda, Kenya &amp; China.</p>
+        {/* Uganda-only launch: copy commented out below referenced all four
+            countries; restore it when the other storefronts are re-enabled. */}
+        {/* <p className="text-amber-600 text-xs truncate">Reach thousands of premium buyers across UAE, Uganda, Kenya &amp; China.</p> */}
+        <p className="text-amber-600 text-xs truncate">Reach thousands of premium buyers across Uganda.</p>
       </div>
       <Link
         href="/advertising"
