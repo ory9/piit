@@ -27,6 +27,23 @@ if [ -z "$DATABASE_URL" ] && [ -z "$DATABASE_PRIVATE_URL" ]; then
   exit 1
 fi
 
+# schema.prisma only declares `url = env("DATABASE_URL")` — the Prisma CLI
+# (migrate deploy / db push / db execute, all called below) reads that
+# variable directly from the OS environment and has NO knowledge of the
+# DATABASE_PRIVATE_URL fallback that src/utils/prisma.ts implements in code.
+# On Railway, where DATABASE_PRIVATE_URL is the recommended variable to set,
+# leaving DATABASE_URL unset caused every `npx prisma ...` call below to fail
+# with "Environment variable not found: DATABASE_URL", which — because of
+# `set -e` — killed the container before the API ever started. That looked
+# like a CORS/network error from the frontend's perspective (no backend was
+# ever there to respond) when the real cause was this mismatch. Bridge it
+# here so either variable works for the CLI exactly as it already does for
+# the running app.
+if [ -z "$DATABASE_URL" ]; then
+  export DATABASE_URL="$DATABASE_PRIVATE_URL"
+  echo "[docker-entrypoint] DATABASE_URL not set — using DATABASE_PRIVATE_URL for Prisma CLI calls."
+fi
+
 # Prevent src/index.ts from running its own in-process migration/hotfix pass;
 # this script is the single source of truth for schema setup in containers.
 export AUTO_MIGRATE_ON_START=false
