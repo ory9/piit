@@ -1,0 +1,1 @@
+git add .; git commit -m"$(TZ='Asia/Dubai' date +'%Y-%m-%d %H:%M:%S')"; git push
