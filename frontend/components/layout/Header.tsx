@@ -66,21 +66,25 @@ const mobileNavItems = [
 const DRAWER_HEADER_H = '68px';
 const DRAWER_HEADER_WITH_USER_H = '140px';
 
-// Uganda-only launch: other countries are commented out (not deleted) so
-// the full mobile country picker can be restored later by uncommenting
-// these entries. With one entry left, MobileCountryPicker's
-// visibleOptions.length <= 1 check below makes it never render.
 const MOBILE_COUNTRY_OPTIONS = [
-  // { value: 'UAE' as const, flag: '🇦🇪', label: 'UAE', sub: 'United Arab Emirates' },
+  { value: 'UAE' as const, flag: '🇦🇪', label: 'UAE', sub: 'United Arab Emirates' },
   { value: 'UGANDA' as const, flag: '🇺🇬', label: 'Uganda', sub: 'East Africa' },
-  // { value: 'KENYA' as const, flag: '🇰🇪', label: 'Kenya', sub: 'East Africa' },
-  // { value: 'CHINA' as const, flag: '🇨🇳', label: 'China', sub: 'Asia Pacific' },
+  { value: 'KENYA' as const, flag: '🇰🇪', label: 'Kenya', sub: 'East Africa' },
+  { value: 'CHINA' as const, flag: '🇨🇳', label: 'China', sub: 'Asia Pacific' },
 ];
 
 function MobileCountryPicker({ onClose }: { onClose: () => void }) {
   const { country, setCountry, enabledCountries } = useCountry();
   const router = useRouter();
   const SLUGS: Record<string, string> = { UAE: 'uae', UGANDA: 'uganda', KENYA: 'kenya', CHINA: 'china' };
+  // Record lookup instead of a `opt.value === 'UAE' ? ... : ...` ternary chain
+  // on purpose: with only one entry left in MOBILE_COUNTRY_OPTIONS, TS narrows
+  // opt.value to the single literal type "UGANDA", and a chain comparing it
+  // against 'UAE'/'KENYA'/'CHINA' then fails to build ("comparison appears to
+  // be unintentional because the types have no overlap"). Indexing a Record
+  // doesn't require the key to match a narrowed literal type, so this stays
+  // correct however many entries are (un)commented above.
+  const ISO_BY_COUNTRY: Record<string, string> = { UAE: 'AE', UGANDA: 'UG', KENYA: 'KE', CHINA: 'CN' };
   const visibleOptions = MOBILE_COUNTRY_OPTIONS.filter((opt) => enabledCountries.includes(opt.value));
 
   // Nothing to switch between when only one country is enabled.
@@ -101,7 +105,7 @@ function MobileCountryPicker({ onClose }: { onClose: () => void }) {
         >
           {/* SVG flag — not emoji */}
           <div className="rounded overflow-hidden ring-1 ring-black/10 mb-0.5">
-            <FlagIcon code={opt.value === 'UAE' ? 'AE' : opt.value === 'UGANDA' ? 'UG' : opt.value === 'KENYA' ? 'KE' : 'CN'} size={28} />
+            <FlagIcon code={ISO_BY_COUNTRY[opt.value]} size={28} />
           </div>
           <span>{opt.label}</span>
           <span className="text-[10px] font-normal text-gray-400">{opt.sub}</span>
@@ -364,14 +368,10 @@ export default function Header() {
                       { href: '/cv-services', icon: '📋', label: 'CV Services' },
                       { href: '/listings?sort=views', icon: '🔥', label: 'Most Popular' },
                       { href: '/listings?sort=price_asc', icon: '💰', label: 'Best Deals' },
-                      // Uganda-only launch: the UAE/Kenya/China marketplace links are
-                      // disabled — the /country/uae|kenya|china routes now 404 — so
-                      // these are commented out rather than left as dead links.
-                      // Uncomment alongside re-enabling those routes to restore them.
-                      // ...(enabledCountries.includes('UAE') ? [{ href: '/country/uae', icon: '🇦🇪', label: 'UAE Marketplace' }] : []),
+                      ...(enabledCountries.includes('UAE') ? [{ href: '/country/uae', icon: '🇦🇪', label: 'UAE Marketplace' }] : []),
                       ...(enabledCountries.includes('UGANDA') ? [{ href: '/country/uganda', icon: '🇺🇬', label: 'Uganda Marketplace' }] : []),
-                      // ...(enabledCountries.includes('KENYA') ? [{ href: '/country/kenya', icon: '🇰🇪', label: 'Kenya Marketplace' }] : []),
-                      // ...(enabledCountries.includes('CHINA') ? [{ href: '/country/china', icon: '🇨🇳', label: 'China Marketplace' }] : []),
+                      ...(enabledCountries.includes('KENYA') ? [{ href: '/country/kenya', icon: '🇰🇪', label: 'Kenya Marketplace' }] : []),
+                      ...(enabledCountries.includes('CHINA') ? [{ href: '/country/china', icon: '🇨🇳', label: 'China Marketplace' }] : []),
                     ].map((item) => (
                       <Link
                         key={item.href}
