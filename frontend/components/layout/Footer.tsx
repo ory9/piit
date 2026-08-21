@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import BrandLogo from '@/components/ui/BrandLogo';
-import FooterLocations from '@/components/layout/FooterLocations';
 
 interface SocialLinks {
   facebook?: string | null;
@@ -76,7 +75,7 @@ export default async function Footer() {
       {/* Main footer content - hidden on mobile, shown on md+ */}
       <div className="hidden md:block">
         <div className="py-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {/* Brand column */}
             <div className="lg:col-span-2">
               <Link href="/" className="flex items-center gap-2 mb-3 w-fit hover:opacity-80 transition-opacity">
@@ -129,12 +128,6 @@ export default async function Footer() {
                 <li><Link href="/careers" className="text-gray-300 hover:text-sky-200 transition-colors">Careers</Link></li>
                 <li><Link href="/press" className="text-gray-300 hover:text-sky-200 transition-colors">Press</Link></li>
               </ul>
-            </div>
-
-            {/* Our Locations */}
-            <div>
-              <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide border-b border-white/10 pb-1">Our Locations</h4>
-              <FooterLocations />
             </div>
 
             {/* Support */}

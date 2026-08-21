@@ -9,6 +9,9 @@ interface FeaturedProductCardProps {
   description?: string;
   originalPrice?: string;
   discountedPrice?: string;
+  /** Optional note shown under the price, e.g. "Listed at AED 100" when the
+   *  displayed price has been currency-converted from what the seller posted. */
+  listedPriceNote?: string;
   imageUrl?: string;
   href?: string;
   isHandpicked?: boolean;
@@ -22,6 +25,7 @@ export default function FeaturedProductCard({
   description,
   originalPrice,
   discountedPrice,
+  listedPriceNote,
   imageUrl,
   href,
   isHandpicked = false,
@@ -85,6 +89,9 @@ export default function FeaturedProductCard({
               <span className="animate-price-pop text-[#0EA5E9] font-extrabold text-sm sm:text-base tabular-nums">{discountedPrice}</span>
             )}
           </div>
+        )}
+        {listedPriceNote && (
+          <p className="text-[9px] sm:text-[10px] text-gray-400 mt-0.5 leading-none">{listedPriceNote}</p>
         )}
       </div>
     </div>

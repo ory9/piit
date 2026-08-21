@@ -232,7 +232,20 @@ export default function ReviewsPage() {
                 <div className="flex items-center gap-3 min-w-0">
                   <UserAvatar user={review.user} size="sm" />
                   <div className="min-w-0">
-                    <p className="text-sm font-semibold text-gray-900 truncate">{review.user?.name || 'Anonymous'}</p>
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <p className="text-sm font-semibold text-gray-900 truncate">{review.user?.name || 'Anonymous'}</p>
+                      {review.verifiedPurchase && (
+                        <span
+                          title="This reviewer completed a purchase of this item"
+                          className="inline-flex items-center gap-0.5 shrink-0 px-1.5 py-0.5 rounded-full text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200"
+                        >
+                          <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                          </svg>
+                          Verified Purchase
+                        </span>
+                      )}
+                    </div>
                     <p className="text-xs text-gray-400">{timeAgo(review.createdAt)}</p>
                   </div>
                 </div>
