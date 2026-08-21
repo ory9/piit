@@ -46,6 +46,7 @@ const navGroups = [
       { href: '/admin/subscriptions', label: 'Subscriptions', icon: '🔔' },
       { href: '/admin/shipping', label: 'Shipping Rates', icon: '🚚' },
       { href: '/admin/currency-rates', label: 'Exchange Rates', icon: '💱' },
+      { href: '/admin/commodity-prices', label: 'Market Prices', icon: '🌾' },
     ],
   },
   {

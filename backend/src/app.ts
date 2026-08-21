@@ -33,6 +33,7 @@ import cvServiceRequestRoutes from './routes/cvServiceRequests';
 import cvPaymentRoutes from './routes/cvPayment';
 import jobRoutes from './routes/jobs';
 import currencyRatesRoutes from './routes/currencyRates';
+import commodityPricesRoutes from './routes/commodityPrices';
 import { getServiceReadiness } from './utils/serviceConfig';
 
 const app = express();
@@ -189,6 +190,7 @@ app.use('/api/cv-service-requests', cvServiceRequestRoutes);
 app.use('/api/cv-payment', cvPaymentRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/currency-rates', currencyRatesRoutes);
+app.use('/api/commodity-prices', commodityPricesRoutes);
 
 // ─── Public site config (whatsapp number, today's deals, header theme) ────────
 // Publicly readable – no auth required so the frontend can load it on every page.

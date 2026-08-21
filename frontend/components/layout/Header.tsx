@@ -66,11 +66,15 @@ const mobileNavItems = [
 const DRAWER_HEADER_H = '68px';
 const DRAWER_HEADER_WITH_USER_H = '140px';
 
+// Uganda-only launch: other countries are commented out (not deleted) so
+// the full mobile country picker can be restored later by uncommenting
+// these entries. With one entry left, MobileCountryPicker's
+// visibleOptions.length <= 1 check below makes it never render.
 const MOBILE_COUNTRY_OPTIONS = [
-  { value: 'UAE' as const, flag: '🇦🇪', label: 'UAE', sub: 'United Arab Emirates' },
+  // { value: 'UAE' as const, flag: '🇦🇪', label: 'UAE', sub: 'United Arab Emirates' },
   { value: 'UGANDA' as const, flag: '🇺🇬', label: 'Uganda', sub: 'East Africa' },
-  { value: 'KENYA' as const, flag: '🇰🇪', label: 'Kenya', sub: 'East Africa' },
-  { value: 'CHINA' as const, flag: '🇨🇳', label: 'China', sub: 'Asia Pacific' },
+  // { value: 'KENYA' as const, flag: '🇰🇪', label: 'Kenya', sub: 'East Africa' },
+  // { value: 'CHINA' as const, flag: '🇨🇳', label: 'China', sub: 'Asia Pacific' },
 ];
 
 function MobileCountryPicker({ onClose }: { onClose: () => void }) {
@@ -362,16 +366,21 @@ export default function Header() {
                     {[
                       { href: '/browse/all', icon: '🌐', label: 'Browse All' },
                       { href: '/listings', icon: '🔍', label: 'All Listings' },
+                      { href: '/market-prices', icon: '🌾', label: 'Uganda Market Prices' },
                       { href: '/motors', icon: '🚗', label: 'Motors' },
                       { href: '/stores', icon: '🏪', label: 'Shop by Store' },
                       { href: '/jobs', icon: '💼', label: 'Job Market' },
                       { href: '/cv-services', icon: '📋', label: 'CV Services' },
                       { href: '/listings?sort=views', icon: '🔥', label: 'Most Popular' },
                       { href: '/listings?sort=price_asc', icon: '💰', label: 'Best Deals' },
-                      ...(enabledCountries.includes('UAE') ? [{ href: '/country/uae', icon: '🇦🇪', label: 'UAE Marketplace' }] : []),
+                      // Uganda-only launch: the UAE/Kenya/China marketplace links are
+                      // disabled — the /country/uae|kenya|china routes now 404 — so
+                      // these are commented out rather than left as dead links.
+                      // Uncomment alongside re-enabling those routes to restore them.
+                      // ...(enabledCountries.includes('UAE') ? [{ href: '/country/uae', icon: '🇦🇪', label: 'UAE Marketplace' }] : []),
                       ...(enabledCountries.includes('UGANDA') ? [{ href: '/country/uganda', icon: '🇺🇬', label: 'Uganda Marketplace' }] : []),
-                      ...(enabledCountries.includes('KENYA') ? [{ href: '/country/kenya', icon: '🇰🇪', label: 'Kenya Marketplace' }] : []),
-                      ...(enabledCountries.includes('CHINA') ? [{ href: '/country/china', icon: '🇨🇳', label: 'China Marketplace' }] : []),
+                      // ...(enabledCountries.includes('KENYA') ? [{ href: '/country/kenya', icon: '🇰🇪', label: 'Kenya Marketplace' }] : []),
+                      // ...(enabledCountries.includes('CHINA') ? [{ href: '/country/china', icon: '🇨🇳', label: 'China Marketplace' }] : []),
                     ].map((item) => (
                       <Link
                         key={item.href}
