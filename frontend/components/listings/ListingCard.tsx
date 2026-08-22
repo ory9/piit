@@ -8,6 +8,7 @@ import { CurrencyDisplay } from '@/components/ui/CurrencyDisplay';
 import { resolveImageUrl } from '@/lib/utils';
 import { FavoriteButton } from './FavoriteButton';
 import { FlagIcon } from '@/components/ui/FlagIcon';
+import { useCountry } from '@/context/CountryContext';
 
 interface Props {
   listing: Listing;
@@ -16,8 +17,11 @@ interface Props {
 }
 
 export function ListingCard({ listing, showFavorite = true, cleanImage = false }: Props) {
-  // Show price in the listing's own currency — the currency it was posted in
-  const displayCurrency = listing.currency;
+  // Global reach: show the price converted to the viewer's detected/selected
+  // currency (from CountryContext, populated via IP geolocation or manual
+  // country selection) rather than always showing the seller's own currency.
+  const { currency: viewerCurrency } = useCountry();
+  const displayCurrency = viewerCurrency;
 
   const primaryImage =
     listing.productImages?.find((image) => image.cdnUrl)?.cdnUrl ??
@@ -81,6 +85,17 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
             {listing.condition === 'NEW' && (
               <span className="badge badge-new text-[9px] xs:text-[10px] shadow-sm"><span aria-hidden="true">✦</span> New</span>
             )}
+            {listing.user?.isKycVerified && (
+              <span
+                title="This seller has completed identity (KYC) verification"
+                className="badge text-[9px] xs:text-[10px] shadow-sm bg-emerald-600 text-white flex items-center gap-0.5"
+              >
+                <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                </svg>
+                KYC Verified
+              </span>
+            )}
             {listing.user?.isVerified && (
               <span className="badge text-[9px] xs:text-[10px] shadow-sm bg-sky-500 text-white">
                 <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -118,7 +133,7 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
           </p>
         )}
 
-        <div className="flex items-baseline gap-1.5 mt-1.5">
+        <div className="flex items-baseline gap-1.5 mt-1.5 flex-wrap">
           <CurrencyDisplay
             amount={listing.price}
             currency={listing.currency}
@@ -134,6 +149,11 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
             />
           )}
         </div>
+        {displayCurrency !== listing.currency && (
+          <p className="text-[9px] xs:text-[10px] text-gray-400 mt-0.5 leading-none">
+            Listed at {listing.currency} {listing.price.toLocaleString()}
+          </p>
+        )}
       </Link>
 
     </div>

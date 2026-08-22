@@ -431,6 +431,45 @@ export default function ProfilePage() {
         </Link>
       </div>
 
+      {/* KYC verification banner */}
+      {user && (
+        <Link
+          href="/profile/verification"
+          className={`mb-4 flex items-center gap-3 rounded-2xl border p-4 transition-colors ${
+            user.kycStatus === 'APPROVED'
+              ? 'bg-emerald-50 border-emerald-200 hover:bg-emerald-100'
+              : user.kycStatus === 'PENDING'
+              ? 'bg-amber-50 border-amber-200 hover:bg-amber-100'
+              : user.kycStatus === 'REJECTED'
+              ? 'bg-red-50 border-red-200 hover:bg-red-100'
+              : 'bg-sky-50 border-sky-200 hover:bg-sky-100'
+          }`}
+        >
+          <div className="shrink-0 w-9 h-9 rounded-xl bg-white/70 flex items-center justify-center text-lg">
+            {user.kycStatus === 'APPROVED' ? '✅' : user.kycStatus === 'PENDING' ? '⏳' : user.kycStatus === 'REJECTED' ? '⚠️' : '🪪'}
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-bold text-gray-900">
+              {user.kycStatus === 'APPROVED'
+                ? "You're KYC Verified"
+                : user.kycStatus === 'PENDING'
+                ? 'Identity verification pending review'
+                : user.kycStatus === 'REJECTED'
+                ? 'Identity verification needs attention'
+                : 'Get KYC Verified'}
+            </p>
+            <p className="text-xs text-gray-500">
+              {user.kycStatus === 'APPROVED'
+                ? 'Your listings get priority review and show a trust badge.'
+                : 'Verified sellers get priority listing approval and a trust badge buyers can find easily.'}
+            </p>
+          </div>
+          <svg className="w-4 h-4 text-gray-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
+      )}
+
       {/* Theme colour picker */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 mb-4 flex flex-col sm:flex-row sm:items-center gap-3">
         <div className="flex items-center gap-2">

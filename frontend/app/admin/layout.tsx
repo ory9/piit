@@ -33,6 +33,7 @@ const navGroups = [
       { href: '/admin/cv-history', label: 'CV History', icon: '📄' },
       { href: '/admin/orders', label: 'Orders', icon: '📦' },
       { href: '/admin/returns', label: 'Returns', icon: '↩️' },
+      { href: '/admin/kyc', label: 'KYC Verification', icon: '🪪' },
       { href: '/admin/reviews', label: 'Reviews', icon: '⭐' },
       { href: '/admin/reports', label: 'Reports', icon: '🚩' },
     ],

@@ -414,6 +414,122 @@ router.put('/users/:id', async (req: AuthRequest, res: Response, next: NextFunct
   }
 });
 
+// ─── KYC (Know Your Customer) identity verification queue ─────────────────────
+
+router.get('/kyc', async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const page = Math.max(1, parseInt(req.query.page as string || '1'));
+    const limit = Math.min(100, parseInt(req.query.limit as string || '20'));
+    const status = (req.query.status as string || 'PENDING').trim();
+    const validStatuses = ['NOT_SUBMITTED', 'PENDING', 'APPROVED', 'REJECTED'];
+    const where = validStatuses.includes(status) ? { kycStatus: status as 'NOT_SUBMITTED' | 'PENDING' | 'APPROVED' | 'REJECTED' } : {};
+
+    const [users, total] = await Promise.all([
+      prisma.user.findMany({
+        where,
+        select: {
+          id: true, name: true, email: true, role: true, country: true,
+          kycStatus: true, kycDocumentType: true, kycDocumentUrl: true, kycSelfieUrl: true,
+          kycFullName: true, kycSubmittedAt: true, kycReviewedAt: true, kycRejectionReason: true,
+          isKycVerified: true,
+        },
+        // Oldest submission first (FIFO), so the queue processes in submission order.
+        orderBy: { kycSubmittedAt: 'asc' },
+        skip: (page - 1) * limit,
+        take: limit,
+      }),
+      prisma.user.count({ where }),
+    ]);
+
+    res.json({ users, pagination: { total, page, limit } });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/kyc/:id/approve', async (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    const target = await prisma.user.findUnique({
+      where: { id: req.params.id },
+      select: { id: true, name: true, email: true, kycStatus: true },
+    });
+    if (!target) throw createError('User not found', 404);
+    if (target.kycStatus !== 'PENDING') {
+      throw createError('Only submissions with status PENDING can be approved', 400);
+    }
+
+    const user = await prisma.user.update({
+      where: { id: req.params.id },
+      data: {
+        kycStatus: 'APPROVED',
+        isKycVerified: true,
+        kycReviewedAt: new Date(),
+        kycReviewedBy: req.user?.userId,
+        kycRejectionReason: null,
+      },
+      select: { id: true, name: true, email: true, kycStatus: true, isKycVerified: true },
+    });
+
+    await prisma.notification.create({
+      data: {
+        userId: user.id,
+        type: 'KYC_APPROVED',
+        title: 'Identity Verified',
+        message: 'Your identity verification (KYC) has been approved. Your listings now get priority review and your profile shows a KYC Verified badge.',
+        data: {},
+      },
+    }).catch((err) => logger.error('Failed to create KYC_APPROVED notification', err));
+
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/kyc/:id/reject', async (req: AuthRequest, res: Response, next: NextFunction) => {
+  try {
+    const { reason } = req.body;
+    if (!reason || typeof reason !== 'string' || !reason.trim()) {
+      throw createError('A rejection reason is required', 400);
+    }
+
+    const target = await prisma.user.findUnique({
+      where: { id: req.params.id },
+      select: { id: true, kycStatus: true },
+    });
+    if (!target) throw createError('User not found', 404);
+    if (target.kycStatus !== 'PENDING') {
+      throw createError('Only submissions with status PENDING can be rejected', 400);
+    }
+
+    const user = await prisma.user.update({
+      where: { id: req.params.id },
+      data: {
+        kycStatus: 'REJECTED',
+        isKycVerified: false,
+        kycReviewedAt: new Date(),
+        kycReviewedBy: req.user?.userId,
+        kycRejectionReason: reason.trim(),
+      },
+      select: { id: true, name: true, email: true, kycStatus: true, kycRejectionReason: true },
+    });
+
+    await prisma.notification.create({
+      data: {
+        userId: user.id,
+        type: 'KYC_REJECTED',
+        title: 'Identity Verification Rejected',
+        message: `Your KYC submission was rejected: ${user.kycRejectionReason}. You can resubmit with corrected documents.`,
+        data: {},
+      },
+    }).catch((err) => logger.error('Failed to create KYC_REJECTED notification', err));
+
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.post('/users/:id/approve-admin', async (req: AuthRequest, res: Response, next: NextFunction) => {
   try {
     if (req.user?.userId === req.params.id) {
@@ -513,7 +629,7 @@ router.get('/listings', async (req: Request, res: Response, next: NextFunction) 
       prisma.listing.findMany({
         where,
         include: {
-          user: { select: { id: true, name: true, email: true } },
+          user: { select: { id: true, name: true, email: true, isKycVerified: true } },
           category: { select: { name: true } },
           productImages: {
             where: { cdnUrl: { not: null }, status: { not: 'REJECTED' } },
@@ -524,7 +640,13 @@ router.get('/listings', async (req: Request, res: Response, next: NextFunction) 
         },
         skip: (page - 1) * limit,
         take: limit,
-        orderBy: { createdAt: 'desc' },
+        // KYC-verified sellers' listings surface first within the queue so
+        // their submissions get reviewed faster (see feature: "priority
+        // access" for verified sellers), then fall back to submission order.
+        orderBy: [
+          { user: { isKycVerified: 'desc' } },
+          { createdAt: status === 'PENDING' ? 'asc' : 'desc' },
+        ],
       }),
       prisma.listing.count({ where }),
     ]);

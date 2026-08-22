@@ -67,6 +67,20 @@ enum ReviewStatus {
   REJECTED
 }
 
+enum KycStatus {
+  NOT_SUBMITTED
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum KycDocumentType {
+  NATIONAL_ID
+  PASSPORT
+  DRIVERS_LICENSE
+  BUSINESS_LICENSE
+}
+
 enum OrderStatus {
   PENDING
   CONFIRMED
@@ -122,6 +136,8 @@ enum NotificationType {
   SUBSCRIPTION_EXPIRED
   SUBSCRIPTION_PENDING
   LISTING_EXPIRED
+  KYC_APPROVED
+  KYC_REJECTED
   SYSTEM
 }
 
@@ -172,6 +188,27 @@ model User {
   country               Country   @default(UAE)
   isVerified            Boolean   @default(false)
   isBanned              Boolean   @default(false)
+  // ─── KYC (Know Your Customer) identity verification ───────────────────────
+  // Distinct from `isVerified` above (which reflects email confirmation /
+  // active-paid-subscription status elsewhere in the app) — this tracks the
+  // separate identity-document review flow. Sellers with kycStatus APPROVED
+  // get priority in the admin listing-approval queue and a "KYC Verified"
+  // badge on their public profile and listings.
+  kycStatus             KycStatus @default(NOT_SUBMITTED)
+  // Denormalized boolean mirror of `kycStatus === APPROVED`, kept in sync by
+  // the admin KYC approve/reject endpoints. Exists so callers (badge display,
+  // priority sort in the admin listing queue and public browse) can use a
+  // simple boolean instead of comparing/ordering the enum, which is more
+  // reliable across DB engines than relying on enum declaration order.
+  isKycVerified         Boolean   @default(false)
+  kycDocumentType       KycDocumentType?
+  kycDocumentUrl        String?
+  kycSelfieUrl          String?
+  kycFullName           String?
+  kycSubmittedAt        DateTime?
+  kycReviewedAt         DateTime?
+  kycReviewedBy         String?
+  kycRejectionReason    String?
   emailVerificationToken  String?   @unique
   emailVerificationExpiry DateTime?
   refreshToken          String?
@@ -217,6 +254,9 @@ model User {
   storeRentals     StoreRental[]        @relation("StoreRentalUser")
   listingEngagements ListingEngagement[]
   cvDownloadTokens CvDownloadToken[]
+
+  @@index([kycStatus, kycSubmittedAt])
+  @@index([isKycVerified])
 }
 
 model Store {

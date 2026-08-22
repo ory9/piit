@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 import HeroSlideshow from '@/components/ui/HeroSlideshow';
 import { CategorySideNav, PromoSideCards } from '@/components/ui/HeroSideCards';
 import CountryFlashDeals from '@/components/ui/CountryFlashDeals';
-import PromoBanners from '@/components/ui/PromoBanners';
 import CategoryPills from '@/components/ui/CategoryPills';
 import CountryThemedHome from '@/components/ui/CountryThemedHome';
 import QuickActions from '@/components/ui/QuickActions';
@@ -333,10 +332,7 @@ export default async function HomePage() {
             )}
           </section>
 
-          {/* ═══ 9. MARKET CTAs ═══ */}
-          <PromoBanners />
-
-          {/* ═══ 10. QUICK ACTIONS ═══ */}
+          {/* ═══ 9. QUICK ACTIONS ═══ */}
           <QuickActions />
 
           {/* ═══ SAFETY BANNER ═══ */}
@@ -419,7 +415,7 @@ export default async function HomePage() {
               <p className="text-3xl xs:text-4xl mb-2 xs:mb-3">🚀</p>
               <h2 className="text-xl xs:text-2xl font-extrabold mb-1.5 xs:mb-2">Ready to List?</h2>
               <p className="text-white/80 text-xs xs:text-sm mb-4 xs:mb-5 max-w-sm mx-auto">
-                Showcase your premium items to discerning buyers across UAE, Uganda, Kenya and China.
+                Showcase your premium items to discerning buyers across Uganda.
               </p>
               <Link
                 href="/listings/create"
