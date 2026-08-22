@@ -67,7 +67,10 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
 
       {/* Header – desktop */}
       <div className="hidden md:flex items-center justify-between pb-3 border-b border-gray-100">
-        <h2 className="font-extrabold text-gray-900 text-sm">Filters</h2>
+        <h2 className="font-extrabold text-gray-900 text-sm flex items-center gap-1.5">
+          <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" /></svg>
+          Filters
+        </h2>
         <button
           onClick={() => { router.push(`/listings?country=${country}`); onClose?.(); }}
           className="text-xs text-sky-600 hover:text-sky-700 font-semibold transition-colors interactive"
@@ -78,20 +81,22 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
 
       {/* ── Verified Sellers filter ── */}
       <div>
-        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2.5">Trust & Safety</h3>
+        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+          <span aria-hidden="true">🛡️</span> Trust &amp; Safety
+        </h3>
         <label className="flex items-center gap-2.5 cursor-pointer group">
           <div className="relative">
             <input
               type="checkbox"
-              checked={params?.get('verified') === 'true'}
-              onChange={(e) => update('verified', e.target.checked ? 'true' : '')}
+              checked={params?.get('verifiedOnly') === 'true'}
+              onChange={(e) => update('verifiedOnly', e.target.checked ? 'true' : '')}
               className="sr-only peer"
             />
-            <div className="w-9 h-5 bg-gray-200 peer-checked:bg-sky-500 rounded-full transition-colors" />
+            <div className="w-9 h-5 bg-gray-200 peer-checked:bg-emerald-500 rounded-full transition-colors" />
             <div className="absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform peer-checked:translate-x-4" />
           </div>
           <span className="text-sm text-gray-700 group-hover:text-gray-900 transition-colors">
-            Verified Sellers Only
+            KYC Verified Sellers Only
           </span>
         </label>
         <p className="text-[10px] text-gray-400 mt-1.5">
@@ -100,7 +105,9 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
       </div>
 
       <div>
-        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2">Category</h3>
+        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span aria-hidden="true">📂</span> Category
+        </h3>
         <select
           value={params?.get('category') || ''}
           onChange={(e) => update('category', e.target.value)}
@@ -114,7 +121,9 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
       </div>
 
       <div>
-        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2">Location</h3>
+        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span aria-hidden="true">📍</span> Location
+        </h3>
         <select
           value={params?.get('location') || ''}
           onChange={(e) => update('location', e.target.value)}
@@ -128,7 +137,9 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
       </div>
 
       <div>
-        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2.5">Condition</h3>
+        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+          <span aria-hidden="true">🏷️</span> Condition
+        </h3>
         <div className="flex gap-2">
           {[
             { value: '', label: 'Any' },
@@ -151,7 +162,9 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
       </div>
 
       <div>
-        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2">Price Range</h3>
+        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span aria-hidden="true">💰</span> Price Range
+        </h3>
 
         {/* Preset ranges */}
         <div className="grid grid-cols-2 gap-1.5 mb-3">
@@ -195,7 +208,9 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
       </div>
 
       <div>
-        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2">Sort By</h3>
+        <h3 className="font-bold text-gray-800 text-xs uppercase tracking-wider mb-2 flex items-center gap-1.5">
+          <span aria-hidden="true">↕️</span> Sort By
+        </h3>
         <select
           value={params?.get('sort') || 'createdAt'}
           onChange={(e) => update('sort', e.target.value)}
@@ -221,7 +236,9 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
     <>
       {/* Desktop sidebar */}
       <aside className="hidden md:block w-60 shrink-0">
-        {content}
+        <div className="sticky top-20">
+          {content}
+        </div>
       </aside>
 
       {/* Mobile drawer */}
