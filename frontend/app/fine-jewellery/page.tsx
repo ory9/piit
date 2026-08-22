@@ -23,7 +23,7 @@ export default function FineJewelleryPage() {
           Discover <span className="text-amber-400">Fine Jewellery</span>
         </>
       }
-      heroSubtitle="Explore exquisite gold, silver and gemstone jewellery from verified sellers across UAE, Uganda, Kenya and China."
+      heroSubtitle="Explore exquisite gold, silver and gemstone jewellery from verified sellers across Uganda."
       subcategories={JEWELLERY_SUBCATEGORIES}
       basePath="/fine-jewellery"
       postCtaLabel="+ Sell Jewellery"

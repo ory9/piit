@@ -1111,7 +1111,7 @@ export default function JobsMarketPage() {
             <div className="flex-1">
               <h2 className="text-2xl font-black tracking-tight">Hire with Us</h2>
               <p className="mt-2 max-w-xl text-white/80 text-sm">
-                Access thousands of verified candidates across UAE, Kenya, Uganda & China. Post jobs, browse CVs, and connect directly with talent — all in one place.
+                Access thousands of verified candidates across Uganda. Post jobs, browse CVs, and connect directly with talent — all in one place.
               </p>
               <div className="mt-4 flex flex-wrap gap-3">
                 <div className="flex items-center gap-2 text-xs text-white/70">

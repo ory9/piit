@@ -189,7 +189,7 @@ export default function StoresPage() {
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2">Our Partners</h1>
           <p className="text-sky-100 text-base max-w-2xl mx-auto">
-            Verified partners and stores approved by Piitrade across UAE, Uganda, Kenya and China.
+            Verified partners and stores approved by Piitrade across Uganda.
           </p>
         </div>
       </div>

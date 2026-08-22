@@ -24,7 +24,7 @@ export default function PropertyPage() {
           Find Your <span className="text-amber-400">Perfect Home</span>
         </>
       }
-      heroSubtitle="Browse thousands of property listings for rent and sale across UAE, Uganda, Kenya and China."
+      heroSubtitle="Browse thousands of property listings for rent and sale across Uganda."
       subcategories={PROPERTY_SUBCATEGORIES}
       basePath="/property"
       postCtaLabel="+ List Property"

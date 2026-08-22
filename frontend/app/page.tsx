@@ -18,11 +18,11 @@ import CountryRecentAcrossCategories from '@/components/ui/CountryRecentAcrossCa
 import { resolveImageUrl } from '@/lib/utils';
 
 export const metadata: Metadata = {
-  title: 'Piitrade Marketplace - Buy & Sell in UAE, Uganda, Kenya & China',
-  description: 'Discover premium listings on Piitrade: electronics, vehicles, fashion, real estate and more. Trusted marketplace for UAE, Uganda, Kenya and China.',
+  title: 'Piitrade Marketplace - Buy & Sell in Uganda',
+  description: 'Discover premium listings on Piitrade: electronics, vehicles, fashion, real estate and more. Trusted marketplace for Uganda.',
   openGraph: {
-    title: 'Piitrade Marketplace - UAE, Uganda, Kenya & China',
-    description: 'Discover premium listings on Piitrade. Trusted marketplace for UAE, Uganda, Kenya and China.',
+    title: 'Piitrade Marketplace - Uganda',
+    description: 'Discover premium listings on Piitrade. Trusted marketplace for Uganda.',
   },
 };
 

@@ -588,7 +588,7 @@ export default function StoreRentalDashboard() {
           <div className="text-5xl mb-4">🏪</div>
           <h2 className="text-lg font-bold text-gray-800 mb-2">Open Your Store on Piitrade</h2>
           <p className="text-sm text-gray-500 mb-2 max-w-md mx-auto">
-            Get a verified digital storefront to showcase your products and reach buyers across UAE, Uganda, Kenya, and China.
+            Get a verified digital storefront to showcase your products and reach buyers across Uganda.
           </p>
           {/* Subscription fee prominently displayed */}
           <div className="inline-flex items-center gap-2 bg-violet-50 border border-violet-200 rounded-xl px-4 py-2.5 mb-6">

@@ -254,7 +254,7 @@ export default function MotorsPage() {
               { icon: '🔒', title: 'Verified Sellers', desc: 'All sellers are verified for your safety and peace of mind.' },
               { icon: '📸', title: 'High-Quality Photos', desc: 'Listings feature detailed images reviewed by our team.' },
               { icon: '💬', title: 'Direct Messaging', desc: 'Chat directly with sellers to negotiate and inspect.' },
-              { icon: '🌍', title: 'Regional Coverage', desc: 'Listings across UAE, Uganda, Kenya and China.' },
+              { icon: '🇺🇬', title: 'Nationwide Coverage', desc: 'Listings across every region of Uganda.' },
             ].map((item) => (
               <div key={item.title} className="text-center">
                 <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-sky-50 flex items-center justify-center text-2xl">{item.icon}</div>

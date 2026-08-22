@@ -23,7 +23,7 @@ export default function PremiumServicesPage() {
           Top-Tier <span className="text-fuchsia-400">Premium Services</span>
         </>
       }
-      heroSubtitle="Connect with top-tier service providers — legal, financial, medical, home, tech and beyond — across UAE, Uganda, Kenya and China."
+      heroSubtitle="Connect with top-tier service providers — legal, financial, medical, home, tech and beyond — across Uganda."
       subcategories={SERVICES_SUBCATEGORIES}
       basePath="/premium-services"
       postCtaLabel="+ Offer Your Service"

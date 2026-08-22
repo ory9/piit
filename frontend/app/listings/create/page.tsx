@@ -712,7 +712,7 @@ function CreateListingContent() {
             </p>
             <h1 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Post products after you sign in</h1>
             <p className="mt-3 max-w-2xl text-sm text-white/85 sm:text-base">
-              Sign in or create an account to publish products, attach images, and place each item in its correct category for UAE and Uganda buyers.
+              Sign in or create an account to publish products, attach images, and place each item in its correct category for Uganda buyers.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link

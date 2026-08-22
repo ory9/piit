@@ -8,6 +8,7 @@ import { useCart } from '@/context/CartContext';
 import { UserAvatar } from '@/components/ui/UserAvatar';
 import { useRouter, usePathname } from 'next/navigation';
 import CategoryBar from '@/components/layout/CategoryBar';
+import HeaderSearch from '@/components/layout/HeaderSearch';
 import { CountrySelector } from '@/components/ui/CountrySelector';
 import ThemeSwitcher from '@/components/ui/ThemeSwitcher';
 import { api } from '@/lib/api';
@@ -121,7 +122,7 @@ function MobileCountryPicker({ onClose }: { onClose: () => void }) {
 
 export default function Header() {
   const { user, logout } = useAuth();
-  const { country, enabledCountries } = useCountry();
+  const { enabledCountries } = useCountry();
   const { totalItems } = useCart();
   const { headerTheme } = useSiteConfig();
   const pathname = usePathname();
@@ -134,10 +135,8 @@ export default function Header() {
   const [unreadCount, setUnreadCount] = useState(0);
   const [notifPreview, setNotifPreview] = useState<Notification[]>([]);
   const [notifLoading, setNotifLoading] = useState(false);
-  const [searchQ, setSearchQ] = useState('');
-  const [searchCategory, setSearchCategory] = useState('');
+
   const [scrolled, setScrolled] = useState(false);
-  const router = useRouter();
   const profileDropRef = useRef<HTMLDivElement>(null);
   const browseDropRef = useRef<HTMLDivElement>(null);
   const sellDropRef = useRef<HTMLDivElement>(null);
@@ -242,15 +241,6 @@ export default function Header() {
     if (notifOpen) fetchNotifPreview();
   }, [notifOpen, fetchNotifPreview]);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const params = new URLSearchParams();
-    if (searchQ.trim()) params.set('q', searchQ.trim());
-    if (searchCategory) params.set('category', searchCategory);
-    params.set('country', country);
-    router.push(`/listings?${params.toString()}`);
-  };
-
   const handleMarkAllRead = () => {
     api.put('/notifications/read-all')
       .then(() => {
@@ -300,40 +290,7 @@ export default function Header() {
             />
           </Link>
 
-          <form onSubmit={handleSearch} className="hidden sm:flex flex-1 min-w-0 md:max-w-xl">
-            <div className={`flex w-full rounded-xl overflow-hidden ring-2 transition-all shadow-lg ${scrolled ? 'ring-sky-200 focus-within:ring-[var(--theme-primary)]' : 'ring-white/30 focus-within:ring-white/70'}`}>
-              {/* All Categories dropdown */}
-              <select
-                value={searchCategory}
-                onChange={(e) => setSearchCategory(e.target.value)}
-                className={`shrink-0 px-2 py-2 text-xs font-semibold border-r focus:outline-none cursor-pointer ${scrolled ? 'bg-gray-50 text-gray-700 border-gray-200' : 'bg-white/10 text-white border-white/20'}`}
-                aria-label="Filter by category"
-              >
-                <option value="">All Categories</option>
-                <option value="motors">Motors</option>
-                <option value="property">Property</option>
-                <option value="electronics">Electronics</option>
-                <option value="fashion">Fashion</option>
-                <option value="furniture">Furniture</option>
-                <option value="jobs">Jobs</option>
-                <option value="services">Services</option>
-                <option value="classifieds">Classifieds</option>
-              </select>
-              <input
-                type="text"
-                value={searchQ}
-                onChange={(e) => setSearchQ(e.target.value)}
-                placeholder="Search products, brands…"
-                className={`flex-1 min-w-0 px-3 md:px-4 py-2 text-sm md:text-base focus:outline-none ${scrolled ? 'bg-white text-gray-900 placeholder:text-gray-400' : 'bg-white/10 text-white placeholder:text-white/60'}`}
-              />
-              <button
-                type="submit"
-                className={`px-3 md:px-4 py-2 text-sm md:text-base font-semibold flex-shrink-0 transition-colors ${scrolled ? 'bg-gradient-to-r from-[var(--theme-primary-dark)] to-[var(--theme-primary)] text-white hover:brightness-110' : 'bg-premium-gold/90 text-white hover:bg-premium-gold'}`}
-              >
-                Search
-              </button>
-            </div>
-          </form>
+          <HeaderSearch variant="desktop" scrolled={scrolled} />
 
           <nav className="flex items-center gap-0.5 sm:gap-1 md:gap-1.5 ml-auto flex-shrink-0">
             <Link
@@ -668,35 +625,7 @@ export default function Header() {
         </div>
 
         <div className={`sm:hidden border-t px-3 py-2 ${scrolled ? 'border-sky-100 bg-white' : 'border-white/10 bg-[var(--theme-primary-dark)]/40 backdrop-blur-sm'}`}>
-          <form onSubmit={handleSearch} className="flex flex-col gap-1.5">
-            <select
-              value={searchCategory}
-              onChange={(e) => setSearchCategory(e.target.value)}
-              className={`w-full px-3 py-2 text-xs font-semibold rounded-lg border focus:outline-none ${scrolled ? 'bg-gray-50 text-gray-700 border-gray-200' : 'bg-white/10 text-white border-white/20'}`}
-            >
-              <option value="">All Categories</option>
-              <option value="motors">Motors</option>
-              <option value="property">Property</option>
-              <option value="electronics">Electronics</option>
-              <option value="fashion">Fashion</option>
-              <option value="furniture">Furniture</option>
-              <option value="jobs">Jobs</option>
-              <option value="services">Services</option>
-              <option value="classifieds">Classifieds</option>
-            </select>
-            <div className="flex rounded-lg overflow-hidden ring-2 ring-white/20">
-              <input
-                type="text"
-                value={searchQ}
-                onChange={(e) => setSearchQ(e.target.value)}
-                placeholder="Search products, brands and categories"
-                className={`flex-1 min-w-0 px-3 py-2 text-sm focus:outline-none ${scrolled ? 'bg-white text-gray-900 placeholder:text-gray-400' : 'bg-white/10 text-white placeholder:text-white/60'}`}
-              />
-              <button type="submit" className={`px-4 py-2 text-sm font-semibold ${scrolled ? 'bg-premium-gold text-white hover:bg-premium-gold-dark' : 'bg-premium-gold/90 text-white hover:bg-premium-gold'}`}>
-                Search
-              </button>
-            </div>
-          </form>
+          <HeaderSearch variant="mobile" scrolled={scrolled} />
         </div>
 
         <div className="hidden sm:block"><CategoryBar /></div>

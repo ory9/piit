@@ -138,7 +138,7 @@ export default function CategoryPageTemplate({
           <span className="text-xl sm:text-2xl shrink-0" aria-hidden="true">{heroIcon}</span>
           <div className="min-w-0 flex-1">
             <h1 className="text-sm sm:text-lg font-extrabold leading-tight truncate">{heroTitle}</h1>
-            <p className="hidden sm:block text-white/70 text-xs truncate">{heroSubtitle}</p>
+            <p className="hidden sm:block text-white/70 text-xs leading-snug line-clamp-2">{heroSubtitle}</p>
           </div>
           <Link
             href="/listings/create"
