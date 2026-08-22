@@ -27,12 +27,6 @@ export default function PremiumServicesPage() {
       subcategories={SERVICES_SUBCATEGORIES}
       basePath="/premium-services"
       postCtaLabel="+ Offer Your Service"
-      whyItems={[
-        { icon: '🔒', title: 'Verified Providers', desc: 'All service providers are screened and identity-verified.' },
-        { icon: '⭐', title: 'Rated & Reviewed', desc: 'Transparent ratings and reviews from real clients.' },
-        { icon: '💬', title: 'Direct Contact', desc: 'Message and negotiate with providers directly on the platform.' },
-        { icon: '🌍', title: 'Regional Network', desc: 'Premium service listings across UAE, Uganda, Kenya and China.' },
-      ]}
     />
   );
 }

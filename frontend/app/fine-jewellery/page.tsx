@@ -27,12 +27,6 @@ export default function FineJewelleryPage() {
       subcategories={JEWELLERY_SUBCATEGORIES}
       basePath="/fine-jewellery"
       postCtaLabel="+ Sell Jewellery"
-      whyItems={[
-        { icon: '🔒', title: 'Verified Sellers', desc: 'Every jewellery seller is identity-verified for your peace of mind.' },
-        { icon: '📸', title: 'Detailed Photos', desc: 'High-resolution imagery so you can inspect every piece closely.' },
-        { icon: '💬', title: 'Direct Messaging', desc: 'Negotiate and ask questions directly with the seller.' },
-        { icon: '🌍', title: 'Regional Coverage', desc: 'Fine jewellery listings from UAE, Uganda, Kenya and China.' },
-      ]}
     />
   );
 }

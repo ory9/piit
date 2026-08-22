@@ -28,12 +28,6 @@ export default function PropertyPage() {
       subcategories={PROPERTY_SUBCATEGORIES}
       basePath="/property"
       postCtaLabel="+ List Property"
-      whyItems={[
-        { icon: '🔒', title: 'Verified Listings', desc: 'All properties are verified by our team.' },
-        { icon: '📸', title: 'Full Photo Galleries', desc: 'Browse interior and exterior photos before visiting.' },
-        { icon: '💬', title: 'Contact Landlords', desc: 'Message owners directly to schedule viewings.' },
-        { icon: '🌍', title: 'Regional Coverage', desc: 'Properties in UAE, Uganda, Kenya and China.' },
-      ]}
     />
   );
 }

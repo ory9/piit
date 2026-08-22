@@ -27,12 +27,6 @@ export default function ArtsCollectiblesPage() {
       subcategories={ARTS_SUBCATEGORIES}
       basePath="/arts-collectibles"
       postCtaLabel="+ List Your Artwork"
-      whyItems={[
-        { icon: '🔒', title: 'Verified Sellers', desc: 'All sellers are verified to protect the integrity of every transaction.' },
-        { icon: '📸', title: 'High-Quality Photos', desc: 'Detailed images so you can inspect provenance and condition.' },
-        { icon: '💬', title: 'Direct Messaging', desc: 'Connect directly with sellers and collectors for negotiations.' },
-        { icon: '🌍', title: 'Global Reach', desc: 'Art & collectible listings from UAE, Uganda, Kenya and China.' },
-      ]}
     />
   );
 }
