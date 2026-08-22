@@ -100,25 +100,25 @@ const features = [
     icon: '🔒',
     title: 'Trusted & Verified',
     desc: 'Every seller is vetted. Secure transactions and verified authenticity.',
-    color: 'from-emerald-500 to-teal-600',
+    color: 'from-[#0369a1] to-premium-navy',
   },
   {
     icon: '✦',
     title: 'Curated Selection',
     desc: 'Only the finest listings. Quality over quantity, always.',
-    color: 'from-violet-500 to-purple-600',
+    color: 'from-[#075985] to-[#0c4a6e]',
   },
   {
     icon: '💎',
     title: 'Exclusive Pricing',
     desc: 'Member-only deals and exclusive access to premium collections.',
-    color: 'from-amber-500 to-orange-500',
+    color: 'from-premium-gold to-premium-gold-dark',
   },
   {
-    icon: '🌍',
-    title: 'Global Reach',
-    desc: 'Connect with trusted buyers and sellers across UAE, Uganda, Kenya and China.',
-    color: 'from-sky-500 to-blue-600',
+    icon: '🇺🇬',
+    title: 'Nationwide Reach',
+    desc: 'Connect with trusted buyers and sellers across Uganda.',
+    color: 'from-[#0284c7] to-[#0369a1]',
   },
 ];
 
@@ -356,32 +356,33 @@ export default async function HomePage() {
           </section>
 
           {/* ═══ GET VERIFIED CTA ═══ */}
-          <section className="relative overflow-hidden bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 rounded-xl px-4 xs:px-6 py-6 xs:py-8 sm:px-10 text-white">
+          <section className="relative overflow-hidden bg-gradient-to-r from-premium-navy via-[#075985] to-[#0c4a6e] rounded-xl px-4 xs:px-6 py-6 xs:py-8 sm:px-10 text-white">
             <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-              <div className="absolute -top-8 -right-8 w-40 h-40 bg-white/10 rounded-full blur-2xl" />
+              <div className="absolute -top-8 -right-8 w-40 h-40 bg-premium-gold/10 rounded-full blur-2xl" />
               <div className="absolute -bottom-8 -left-8 w-48 h-48 bg-white/10 rounded-full blur-2xl" />
+              <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-transparent via-premium-gold to-transparent" />
             </div>
             <div className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
-              <div className="shrink-0 w-14 h-14 xs:w-16 xs:h-16 bg-white/20 rounded-2xl flex items-center justify-center text-3xl">
-                ✅
+              <div className="shrink-0 w-14 h-14 xs:w-16 xs:h-16 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center text-3xl">
+                🪪
               </div>
               <div className="text-center sm:text-left flex-1">
-                <h2 className="text-lg xs:text-xl font-extrabold mb-1">Join the Inner Circle — Unlock Exclusive Access</h2>
-                <p className="text-white/80 text-xs xs:text-sm max-w-md">
-                  Verified members get early access to limited drops,
-                  exclusive pricing, and a trust badge on every listing.
+                <h2 className="text-lg xs:text-xl font-extrabold mb-1">Get KYC Verified — Sell With Trust</h2>
+                <p className="text-sky-100/80 text-xs xs:text-sm max-w-md">
+                  Confirm your identity to unlock priority listing review, a KYC Verified badge buyers
+                  can spot instantly, and higher placement in search results.
                 </p>
-                <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-2 xs:mt-3 text-xs text-white/80">
-                  <span className="flex items-center gap-1"><span className="text-yellow-300">✓</span> Priority access</span>
-                  <span className="flex items-center gap-1"><span className="text-yellow-300">✓</span> Verified badge</span>
-                  <span className="flex items-center gap-1"><span className="text-yellow-300">✓</span> Member pricing</span>
+                <div className="flex flex-wrap justify-center sm:justify-start gap-2 mt-2 xs:mt-3 text-xs text-sky-100/80">
+                  <span className="flex items-center gap-1"><span className="text-premium-gold-light">✓</span> Priority listing review</span>
+                  <span className="flex items-center gap-1"><span className="text-premium-gold-light">✓</span> KYC Verified badge</span>
+                  <span className="flex items-center gap-1"><span className="text-premium-gold-light">✓</span> Higher search placement</span>
                 </div>
               </div>
               <Link
-                href="/profile/subscription"
-                className="shrink-0 bg-white text-violet-700 font-bold px-5 py-2.5 rounded-xl hover:bg-yellow-300 hover:text-violet-900 transition-all interactive shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm whitespace-nowrap"
+                href="/profile/verification"
+                className="shrink-0 bg-premium-gold text-white font-bold px-5 py-2.5 rounded-xl hover:bg-premium-gold-dark transition-all interactive shadow-lg hover:shadow-xl hover:-translate-y-0.5 text-sm whitespace-nowrap"
               >
-                Join Now →
+                Get Verified →
               </Link>
             </div>
           </section>
@@ -405,21 +406,21 @@ export default async function HomePage() {
             </div>
           </section>
 
-          {/* ═══ POST AD CTA ═══ */}
-          <section className="relative overflow-hidden bg-gradient-to-r from-orange-500 via-rose-500 to-pink-600 rounded-lg px-4 xs:px-6 py-6 xs:py-8 sm:px-10 text-white text-center">
+          {/* ═══ POST AD CTA — primary conversion action, gold = premium/primary accent ═══ */}
+          <section className="relative overflow-hidden bg-gradient-to-r from-premium-gold-dark via-premium-gold to-premium-gold-light rounded-lg px-4 xs:px-6 py-6 xs:py-8 sm:px-10 text-white text-center">
             <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-              <div className="absolute top-0 left-1/4 w-24 xs:w-32 h-24 xs:h-32 bg-white/10 rounded-full blur-xl" />
-              <div className="absolute bottom-0 right-1/4 w-32 xs:w-40 h-32 xs:h-40 bg-white/10 rounded-full blur-xl" />
+              <div className="absolute top-0 left-1/4 w-24 xs:w-32 h-24 xs:h-32 bg-white/15 rounded-full blur-xl" />
+              <div className="absolute bottom-0 right-1/4 w-32 xs:w-40 h-32 xs:h-40 bg-white/15 rounded-full blur-xl" />
             </div>
             <div className="relative">
               <p className="text-3xl xs:text-4xl mb-2 xs:mb-3">🚀</p>
               <h2 className="text-xl xs:text-2xl font-extrabold mb-1.5 xs:mb-2">Ready to List?</h2>
-              <p className="text-white/80 text-xs xs:text-sm mb-4 xs:mb-5 max-w-sm mx-auto">
+              <p className="text-white/90 text-xs xs:text-sm mb-4 xs:mb-5 max-w-sm mx-auto">
                 Showcase your premium items to discerning buyers across Uganda.
               </p>
               <Link
                 href="/listings/create"
-                className="inline-flex items-center gap-2 bg-white text-rose-600 font-bold px-6 py-3 rounded-lg hover:bg-yellow-300 hover:text-rose-700 transition-all interactive shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-white text-premium-gold-dark font-bold px-6 py-3 rounded-lg hover:bg-premium-navy hover:text-white transition-all interactive shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" /></svg>
                 Create Listing
