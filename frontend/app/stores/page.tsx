@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { resolveImageUrl } from '@/lib/utils';
 import { useAuth } from '@/context/AuthContext';
 import { api } from '@/lib/api';
+import { StoreSocialLinks, SocialLinksData } from '@/components/ui/StoreSocialLinks';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -24,6 +25,7 @@ interface Partner {
     companyName: string | null;
     country:     string;
     website:     string | null;
+    socialLinks: SocialLinksData | null;
   };
 }
 
@@ -142,6 +144,9 @@ function PartnerCard({ partner }: { partner: Partner }) {
               🌐 Visit Website
             </a>
           )}
+          {/* Social/contact links — only platforms this partner has actually
+              set appear here (e.g. a WhatsApp number, group, or community link). */}
+          <StoreSocialLinks links={partner.user.socialLinks} size="sm" className="justify-center pt-0.5" />
         </div>
       </div>
     </div>

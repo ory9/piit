@@ -52,6 +52,11 @@ export interface User {
     instagram?: string;
     linkedin?: string;
     facebook?: string;
+    /** WhatsApp deep link — direct number chat (wa.me/...), group invite,
+     *  or community invite link. Stored as-is and opened in a new tab. */
+    whatsapp?: string;
+    tiktok?: string;
+    youtube?: string;
   } | null;
   createdAt: string;
 }

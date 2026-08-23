@@ -142,6 +142,7 @@ export default function ProfilePage() {
     socialInstagram: '',
     socialLinkedin: '',
     socialFacebook: '',
+    socialWhatsapp: '',
   });
   const [saving, setSaving] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -181,6 +182,7 @@ export default function ProfilePage() {
         socialInstagram: user.socialLinks?.instagram || '',
         socialLinkedin: user.socialLinks?.linkedin || '',
         socialFacebook: user.socialLinks?.facebook || '',
+        socialWhatsapp: user.socialLinks?.whatsapp || '',
       });
       setListingsLoading(true);
       api.get(`/listings?limit=6&page=${listingsPage}&sort=createdAt&mine=true`)
@@ -240,6 +242,7 @@ export default function ProfilePage() {
           instagram: form.socialInstagram,
           linkedin: form.socialLinkedin,
           facebook: form.socialFacebook,
+          whatsapp: form.socialWhatsapp,
         },
       });
       updateUser(data);
@@ -774,6 +777,19 @@ export default function ProfilePage() {
                   placeholder="https://facebook.com/username"
                   className="input-premium text-sm"
                 />
+              </div>
+              <div className="sm:col-span-2">
+                <label className="block text-xs font-semibold text-gray-600 mb-1">WhatsApp</label>
+                <input
+                  type="text"
+                  value={form.socialWhatsapp}
+                  onChange={(e) => setForm({ ...form, socialWhatsapp: e.target.value })}
+                  placeholder="wa.me/256700000000, or a group/community invite link"
+                  className="input-premium text-sm"
+                />
+                <p className="text-[10px] text-gray-400 mt-1">
+                  Paste a direct chat link (wa.me/yournumber), or a WhatsApp group/community invite link — buyers on your store page will be able to tap through to it.
+                </p>
               </div>
             </div>
           </div>
