@@ -174,7 +174,7 @@ export default function VerificationPage() {
             </p>
             <Link
               href="/profile/listings"
-              className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold transition-colors"
+              className="inline-flex items-center gap-2 mt-5 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-colors"
             >
               View My Listings
             </Link>
@@ -217,7 +217,7 @@ export default function VerificationPage() {
                 <select
                   value={documentType}
                   onChange={(e) => setDocumentType(e.target.value as DocumentType)}
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-shadow"
+                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-shadow"
                 >
                   {(Object.keys(DOCUMENT_LABELS) as DocumentType[]).map((dt) => (
                     <option key={dt} value={dt}>{DOCUMENT_LABELS[dt]}</option>
@@ -234,7 +234,7 @@ export default function VerificationPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="As it appears on your ID"
-                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-shadow"
+                  className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-shadow"
                 />
               </div>
 
@@ -247,7 +247,7 @@ export default function VerificationPage() {
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
                   onChange={(e) => handleFileSelect(e.target.files, setDocumentFile, setDocumentPreview)}
-                  className="w-full text-sm text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-100 transition-colors"
+                  className="w-full text-sm text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 transition-colors"
                 />
                 {documentPreview && (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -264,7 +264,7 @@ export default function VerificationPage() {
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
                   onChange={(e) => handleFileSelect(e.target.files, setSelfieFile, setSelfiePreview)}
-                  className="w-full text-sm text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-sky-50 file:text-sky-700 hover:file:bg-sky-100 transition-colors"
+                  className="w-full text-sm text-gray-600 file:mr-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100 transition-colors"
                 />
                 {selfiePreview && (
                   // eslint-disable-next-line @next/next/no-img-element
@@ -281,15 +281,15 @@ export default function VerificationPage() {
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm transition-colors disabled:opacity-50 shadow-sm interactive"
+                className="w-full py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-colors disabled:opacity-50 shadow-sm interactive"
               >
                 {submitting ? 'Submitting…' : 'Submit for Verification'}
               </button>
             </form>
 
-            <div className="mt-6 p-4 bg-sky-50 border border-sky-100 rounded-xl">
-              <h3 className="text-xs font-bold text-sky-800 mb-2">Why verify?</h3>
-              <ul className="text-xs text-sky-700 space-y-1">
+            <div className="mt-6 p-4 bg-red-50 border border-red-100 rounded-xl">
+              <h3 className="text-xs font-bold text-red-800 mb-2">Why verify?</h3>
+              <ul className="text-xs text-red-700 space-y-1">
                 <li>• Your new listings get priority in the admin review queue</li>
                 <li>• A &quot;KYC Verified&quot; badge appears on your profile and listings</li>
                 <li>• Verified sellers rank higher in buyer search results</li>

@@ -83,7 +83,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
     ? 'bg-violet-100 text-violet-700'
     : hasStore
     ? 'bg-emerald-100 text-emerald-700'
-    : 'bg-sky-100 text-sky-700';
+    : 'bg-red-100 text-red-700';
 
   return (
     <div className="flex flex-col bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden group">
@@ -127,7 +127,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
           {hasStore && (
             <Link
               href={`/stores/${partner.slug}`}
-              className="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold transition-colors"
+              className="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold transition-colors"
             >
               🏪 Visit Store
             </Link>
@@ -137,7 +137,7 @@ function PartnerCard({ partner }: { partner: Partner }) {
               href={site!}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl border border-gray-200 hover:border-sky-300 hover:bg-sky-50 text-gray-600 hover:text-sky-700 text-xs font-semibold transition-colors"
+              className="flex items-center justify-center gap-1.5 w-full py-2 rounded-xl border border-gray-200 hover:border-red-300 hover:bg-red-50 text-gray-600 hover:text-red-700 text-xs font-semibold transition-colors"
             >
               🌐 Visit Website
             </a>
@@ -178,7 +178,7 @@ export default function StoresPage() {
     <div className="min-h-screen bg-gray-50/90">
 
       {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-sky-600 via-blue-700 to-indigo-800 py-10 px-4">
+      <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-rose-800 py-10 px-4">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle at 20% 50%,#ffffff22 0%,transparent 50%)' }}
@@ -188,7 +188,7 @@ export default function StoresPage() {
             🤝 Partners &amp; Stores
           </div>
           <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2">Our Partners</h1>
-          <p className="text-sky-100 text-base max-w-2xl mx-auto">
+          <p className="text-red-100 text-base max-w-2xl mx-auto">
             Verified partners and stores approved by Piitrade across Uganda.
           </p>
         </div>
@@ -208,7 +208,7 @@ export default function StoresPage() {
             {user && (
               <Link
                 href="/dashboard/partner-logo"
-                className="text-sm font-semibold text-sky-600 hover:text-sky-700 border border-sky-200 hover:bg-sky-50 px-4 py-2 rounded-xl transition-colors shrink-0"
+                className="text-sm font-semibold text-red-600 hover:text-red-700 border border-red-200 hover:bg-red-50 px-4 py-2 rounded-xl transition-colors shrink-0"
               >
                 Upload Partner Logo →
               </Link>
@@ -291,7 +291,7 @@ export default function StoresPage() {
               { icon: '🚀', title: '3. List & Partner',  desc: 'Upload your logo, add products, reach buyers. Approved partners appear here.' },
             ].map((item) => (
               <div key={item.title} className="text-center">
-                <div className="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center text-3xl mx-auto mb-3 shadow-sm">
+                <div className="w-14 h-14 rounded-2xl bg-red-50 flex items-center justify-center text-3xl mx-auto mb-3 shadow-sm">
                   {item.icon}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-1 text-sm">{item.title}</h3>
@@ -302,7 +302,7 @@ export default function StoresPage() {
           <div className="text-center mt-6">
             <Link
               href="/dashboard/store-rental"
-              className="inline-block px-8 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold transition-colors shadow-md"
+              className="inline-block px-8 py-3 rounded-xl bg-red-500 hover:bg-red-600 text-white font-bold transition-colors shadow-md"
             >
               Open Your Store Today
             </Link>

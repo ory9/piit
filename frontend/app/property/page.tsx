@@ -17,7 +17,7 @@ export default function PropertyPage() {
     <CategoryPageTemplate
       categorySlug="property"
       categoryLabel="Property"
-      heroGradient="from-sky-900 via-blue-800 to-sky-900"
+      heroGradient="from-red-900 via-red-800 to-red-900"
       heroIcon="🏠"
       heroTitle={
         <>

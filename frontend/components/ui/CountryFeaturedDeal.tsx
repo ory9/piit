@@ -84,7 +84,7 @@ export default function CountryFeaturedDeal({ initialDeal }: Props) {
             key={i}
             className="bg-white rounded-xl border border-gray-100 overflow-hidden animate-pulse"
           >
-            <div className="aspect-[4/3] bg-gradient-to-br from-sky-100 to-indigo-100" />
+            <div className="aspect-[4/3] bg-gradient-to-br from-red-100 to-rose-100" />
             <div className="p-2 space-y-1.5">
               <div className="h-2.5 bg-gray-200 rounded w-3/4" />
               <div className="h-2 bg-gray-100 rounded w-1/2" />

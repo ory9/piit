@@ -83,7 +83,7 @@ export default function WriteReviewPage() {
     return (
       <div className="max-w-2xl mx-auto px-4 py-8 text-center">
         <p className="text-xl font-bold text-gray-800 mb-4">Listing not found</p>
-        <Link href="/listings" className="text-sky-600 hover:underline text-sm">Browse listings</Link>
+        <Link href="/listings" className="text-red-600 hover:underline text-sm">Browse listings</Link>
       </div>
     );
   }
@@ -102,7 +102,7 @@ export default function WriteReviewPage() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link
             href={`/listings/${id}/reviews`}
-            className="px-6 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold transition-colors"
+            className="px-6 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-colors"
           >
             View all reviews
           </Link>
@@ -134,7 +134,7 @@ export default function WriteReviewPage() {
         <h1 className="text-2xl font-black text-gray-900 mb-1">Write a Review</h1>
         <p className="text-sm text-gray-500 mb-6">
           Share your experience with{' '}
-          <Link href={`/listings/${id}`} className="text-sky-600 hover:underline font-medium">
+          <Link href={`/listings/${id}`} className="text-red-600 hover:underline font-medium">
             {listing.title}
           </Link>
         </p>
@@ -192,7 +192,7 @@ export default function WriteReviewPage() {
               onChange={(e) => setTitle(e.target.value)}
               maxLength={150}
               placeholder="Summarize your experience in a few words"
-              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-shadow"
+              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-shadow"
             />
           </div>
 
@@ -208,7 +208,7 @@ export default function WriteReviewPage() {
               maxLength={2000}
               rows={5}
               placeholder="Tell other buyers about your experience with this product — quality, accuracy of description, communication with the seller, etc."
-              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 resize-none transition-shadow"
+              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 resize-none transition-shadow"
             />
             <p className="text-xs text-gray-400 mt-1 text-right">{content.length}/2000</p>
           </div>
@@ -223,7 +223,7 @@ export default function WriteReviewPage() {
             <button
               type="submit"
               disabled={submitting}
-              className="flex-1 py-3 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-bold text-sm transition-colors disabled:opacity-50 shadow-sm interactive"
+              className="flex-1 py-3 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-sm transition-colors disabled:opacity-50 shadow-sm interactive"
             >
               {submitting ? 'Submitting…' : 'Submit Review'}
             </button>
@@ -237,9 +237,9 @@ export default function WriteReviewPage() {
         </form>
 
         {/* Guidelines */}
-        <div className="mt-6 p-4 bg-sky-50 border border-sky-100 rounded-xl">
-          <h3 className="text-xs font-bold text-sky-800 mb-2">Review Guidelines</h3>
-          <ul className="text-xs text-sky-700 space-y-1">
+        <div className="mt-6 p-4 bg-red-50 border border-red-100 rounded-xl">
+          <h3 className="text-xs font-bold text-red-800 mb-2">Review Guidelines</h3>
+          <ul className="text-xs text-red-700 space-y-1">
             <li>• Be honest and helpful to other buyers</li>
             <li>• Focus on the product and your experience with the seller</li>
             <li>• Avoid personal information or offensive language</li>

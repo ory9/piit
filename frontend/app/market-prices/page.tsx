@@ -164,7 +164,7 @@ export default function MarketPricesPage() {
             <div key={item.id} className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 hover:shadow-md transition-shadow">
               <div className="flex items-start justify-between gap-2 mb-1.5">
                 <h3 className="font-bold text-gray-900 text-sm">{item.name}</h3>
-                <span className={`shrink-0 text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full ${item.marketType === 'WHOLESALE' ? 'bg-violet-100 text-violet-700' : 'bg-sky-100 text-sky-700'}`}>
+                <span className={`shrink-0 text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.5 rounded-full ${item.marketType === 'WHOLESALE' ? 'bg-violet-100 text-violet-700' : 'bg-red-100 text-red-700'}`}>
                   {item.marketType === 'WHOLESALE' ? 'Wholesale' : 'Retail'}
                 </span>
               </div>

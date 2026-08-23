@@ -16,11 +16,11 @@ export default function ArtsCollectiblesPage() {
     <CategoryPageTemplate
       categorySlug="arts-collectibles"
       categoryLabel="Art & Collectibles"
-      heroGradient="from-indigo-900 via-blue-800 to-indigo-900"
+      heroGradient="from-rose-900 via-red-800 to-rose-900"
       heroIcon="🎨"
       heroTitle={
         <>
-          Browse <span className="text-sky-400">Art &amp; Collectibles</span>
+          Browse <span className="text-red-400">Art &amp; Collectibles</span>
         </>
       }
       heroSubtitle="Discover rare original artworks, antiques, sculptures and collectibles from trusted sellers worldwide."

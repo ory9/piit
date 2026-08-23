@@ -105,7 +105,7 @@ export default function SiteAnalytics() {
         <div className="flex flex-col gap-1 w-16 shrink-0">
           {stats ? (
             <>
-              <StatCard label="Total Visitors"   value={stats.totalVisitors}  accent="text-sky-600" />
+              <StatCard label="Total Visitors"   value={stats.totalVisitors}  accent="text-red-600" />
               <StatCard label="Today's Visitors" value={stats.dailyVisitors}  accent="text-emerald-600" />
               <StatCard label="Countries"        value={stats.totalCountries} accent="text-violet-600" />
             </>

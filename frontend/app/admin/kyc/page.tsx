@@ -145,8 +145,8 @@ export default function AdminKycPage() {
             onClick={() => setStatus(s)}
             className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
               status === s
-                ? 'bg-sky-600 text-white'
-                : 'bg-white text-gray-600 border border-gray-200 hover:border-sky-300'
+                ? 'bg-red-600 text-white'
+                : 'bg-white text-gray-600 border border-gray-200 hover:border-red-300'
             }`}
           >
             {s.charAt(0) + s.slice(1).toLowerCase()}

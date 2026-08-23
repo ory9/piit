@@ -140,8 +140,8 @@ function ListingsContent() {
 
   return (
     <div>
-      {/* ── Hero header ── */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-premium-navy via-[#075985] to-[#0c4a6e] py-6 sm:py-10 px-4">
+      {/* ── Compact hero header — trimmed further so listings sit higher on the page ── */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-premium-navy via-[#651A15] to-[#4a1109] py-3 sm:py-4 px-4">
         {/* Ambient texture */}
         <div
           className="absolute inset-0 opacity-[0.07]"
@@ -150,19 +150,19 @@ function ListingsContent() {
         />
         <div className="absolute inset-x-0 bottom-0 h-[3px] bg-gradient-to-r from-transparent via-premium-gold to-transparent" aria-hidden="true" />
 
-        <div className="relative max-w-4xl mx-auto text-center flex flex-col items-center gap-2.5">
+        <div className="relative max-w-4xl mx-auto flex items-center justify-center gap-2.5 flex-wrap">
           {activeMeta && !placement && (
-            <div className="rounded-lg overflow-hidden ring-2 ring-white/40 shadow-md">
-              <FlagIcon code={activeMeta.isoCode} size={36} />
+            <div className="rounded-lg overflow-hidden ring-2 ring-white/40 shadow-md shrink-0">
+              <FlagIcon code={activeMeta.isoCode} size={24} />
             </div>
           )}
-          {placementMeta && <span className="text-4xl" aria-hidden="true">{placementMeta.icon}</span>}
-          <h1 className="text-xl sm:text-3xl font-extrabold text-white tracking-tight">{pageTitle}</h1>
-          <p className="text-sky-100/90 text-xs sm:text-sm max-w-md">{pageSubtitle}</p>
+          {placementMeta && <span className="text-xl shrink-0" aria-hidden="true">{placementMeta.icon}</span>}
+          <h1 className="text-sm sm:text-lg font-extrabold text-white tracking-tight">{pageTitle}</h1>
+          <span className="hidden sm:inline text-red-100/70 text-xs">{pageSubtitle}</span>
           {!loading && (
-            <span className="mt-1 inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-[11px] sm:text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
+            <span className="inline-flex items-center gap-1.5 bg-white/10 border border-white/20 text-white text-[11px] font-semibold px-2.5 py-0.5 rounded-full backdrop-blur-sm shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-premium-gold-light" aria-hidden="true" />
-              {total.toLocaleString()} {total === 1 ? 'listing' : 'listings'} available
+              {total.toLocaleString()} {total === 1 ? 'listing' : 'listings'}
             </span>
           )}
         </div>
@@ -170,7 +170,7 @@ function ListingsContent() {
 
       <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 sm:py-5">
         {/* Search bar */}
-        <div className="mb-3 sm:mb-4 -mt-6 sm:-mt-8 relative z-10">
+        <div className="mb-3 sm:mb-4 relative z-10">
           <div className="bg-white rounded-xl shadow-lg border border-gray-100 p-1">
             <SearchBar
               initialQ={params ? params.get('q') || '' : ''}
@@ -183,9 +183,9 @@ function ListingsContent() {
         {activeFilterCount > 0 && (
           <div className="flex flex-wrap items-center gap-2 mb-3 xs:mb-4">
             {activeQ && (
-              <span className="inline-flex items-center gap-1.5 bg-sky-50 border border-sky-100 text-sky-700 text-xs font-semibold px-3 py-1.5 rounded-full">
+              <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-100 text-red-700 text-xs font-semibold px-3 py-1.5 rounded-full">
                 🔍 &quot;{activeQ}&quot;
-                <button type="button" onClick={() => removeParam('q')} className="ml-0.5 hover:text-sky-900 interactive" aria-label="Remove search filter">×</button>
+                <button type="button" onClick={() => removeParam('q')} className="ml-0.5 hover:text-red-900 interactive" aria-label="Remove search filter">×</button>
               </span>
             )}
             {activeCat && (
@@ -248,12 +248,12 @@ function ListingsContent() {
             onClick={() => setFilterOpen(true)}
             className="relative flex items-center gap-1.5 bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-xl text-sm font-semibold hover:bg-gray-50 transition-colors shadow-sm interactive"
           >
-            <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" />
             </svg>
             Filters
             {activeFilterCount > 0 && (
-              <span className="absolute -top-1.5 -right-1.5 w-4.5 h-4.5 min-w-[18px] px-1 flex items-center justify-center rounded-full bg-sky-600 text-white text-[10px] font-bold">
+              <span className="absolute -top-1.5 -right-1.5 w-4.5 h-4.5 min-w-[18px] px-1 flex items-center justify-center rounded-full bg-red-600 text-white text-[10px] font-bold">
                 {activeFilterCount}
               </span>
             )}
@@ -281,7 +281,7 @@ function ListingsContent() {
                     onClick={() => setDensity('comfortable')}
                     aria-label="Comfortable grid"
                     aria-pressed={density === 'comfortable'}
-                    className={`p-1.5 rounded-md transition-colors interactive ${density === 'comfortable' ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                    className={`p-1.5 rounded-md transition-colors interactive ${density === 'comfortable' ? 'bg-white text-red-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1" strokeWidth={2}/><rect x="14" y="3" width="7" height="7" rx="1" strokeWidth={2}/><rect x="3" y="14" width="7" height="7" rx="1" strokeWidth={2}/><rect x="14" y="14" width="7" height="7" rx="1" strokeWidth={2}/></svg>
                   </button>
@@ -289,7 +289,7 @@ function ListingsContent() {
                     onClick={() => setDensity('compact')}
                     aria-label="Compact grid"
                     aria-pressed={density === 'compact'}
-                    className={`p-1.5 rounded-md transition-colors interactive ${density === 'compact' ? 'bg-white text-sky-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
+                    className={`p-1.5 rounded-md transition-colors interactive ${density === 'compact' ? 'bg-white text-red-600 shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="10" y="3" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="17" y="3" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="3" y="10" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="10" y="10" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="17" y="10" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="3" y="17" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="10" y="17" width="4" height="4" rx="0.5" strokeWidth={2}/><rect x="17" y="17" width="4" height="4" rx="0.5" strokeWidth={2}/></svg>
                   </button>
@@ -303,7 +303,7 @@ function ListingsContent() {
                     onClick={() => setSortOpen((v) => !v)}
                     aria-haspopup="listbox"
                     aria-expanded={sortOpen}
-                    className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-sky-600 transition-colors interactive"
+                    className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-red-600 transition-colors interactive"
                   >
                     <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4h13M3 8h9M3 12h5m10-8v16m0 0l-4-4m4 4l4-4"/></svg>
                     {SORT_OPTIONS[activeSort] || 'Sort'}
@@ -323,7 +323,7 @@ function ListingsContent() {
                               aria-selected={activeSort === key}
                               onClick={() => setSort(key)}
                               className={`w-full text-left px-4 py-2.5 text-sm flex items-center justify-between transition-colors ${
-                                activeSort === key ? 'bg-sky-50 text-sky-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'
+                                activeSort === key ? 'bg-red-50 text-red-700 font-semibold' : 'text-gray-600 hover:bg-gray-50'
                               }`}
                             >
                               {label}
@@ -367,7 +367,7 @@ function ListingsContent() {
                             key={p}
                             onClick={() => goToPage(p as number)}
                             className={`w-9 h-9 rounded-lg text-sm font-semibold transition-all interactive ${
-                              p === currentPage ? 'bg-sky-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-sky-200'
+                              p === currentPage ? 'bg-red-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-red-200'
                             }`}
                           >{p}</button>
                         )

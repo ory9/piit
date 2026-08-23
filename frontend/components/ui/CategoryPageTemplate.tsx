@@ -156,7 +156,7 @@ export default function CategoryPageTemplate({
             <button
               onClick={() => setSubcategory('')}
               className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all interactive border ${
-                !subcategory ? 'bg-sky-600 text-white border-sky-600 shadow-sm' : 'bg-white text-gray-600 border-gray-200 hover:border-sky-300'
+                !subcategory ? 'bg-red-600 text-white border-red-600 shadow-sm' : 'bg-white text-gray-600 border-gray-200 hover:border-red-300'
               }`}
             >
               All {categoryLabel}
@@ -166,7 +166,7 @@ export default function CategoryPageTemplate({
                 key={sub.slug}
                 onClick={() => setSubcategory(sub.slug === subcategory ? '' : sub.slug)}
                 className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all interactive border ${
-                  subcategory === sub.slug ? 'bg-sky-600 text-white border-sky-600 shadow-sm' : 'bg-white text-gray-600 border-gray-200 hover:border-sky-300'
+                  subcategory === sub.slug ? 'bg-red-600 text-white border-red-600 shadow-sm' : 'bg-white text-gray-600 border-gray-200 hover:border-red-300'
                 }`}
               >
                 <span aria-hidden="true">{sub.icon}</span> {sub.label}
@@ -186,7 +186,7 @@ export default function CategoryPageTemplate({
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder={`Search ${categoryLabel.toLowerCase()}...`}
-              className="w-full bg-white border border-gray-200 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300 focus:border-sky-400 transition-shadow"
+              className="w-full bg-white border border-gray-200 rounded-lg pl-9 pr-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-300 focus:border-red-400 transition-shadow"
             />
           </div>
 
@@ -198,7 +198,7 @@ export default function CategoryPageTemplate({
                   key={opt.value}
                   onClick={() => setSort(opt.value)}
                   className={`px-2.5 py-1 rounded-md text-xs font-semibold whitespace-nowrap transition-all interactive ${
-                    sort === opt.value ? 'bg-sky-600 text-white shadow-sm' : 'text-gray-500 hover:text-sky-600'
+                    sort === opt.value ? 'bg-red-600 text-white shadow-sm' : 'text-gray-500 hover:text-red-600'
                   }`}
                 >
                   {opt.label}
@@ -209,7 +209,7 @@ export default function CategoryPageTemplate({
             <select
               value={sort}
               onChange={(e) => setSort(e.target.value as typeof sort)}
-              className="md:hidden bg-white border border-gray-200 rounded-lg px-2.5 py-2 text-xs font-semibold text-gray-600 focus:outline-none focus:ring-2 focus:ring-sky-300"
+              className="md:hidden bg-white border border-gray-200 rounded-lg px-2.5 py-2 text-xs font-semibold text-gray-600 focus:outline-none focus:ring-2 focus:ring-red-300"
             >
               {SORT_OPTS.map((opt) => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
             </select>
@@ -218,12 +218,12 @@ export default function CategoryPageTemplate({
             <div className="relative" ref={moreRef}>
               <button
                 onClick={() => setMoreOpen((v) => !v)}
-                className="relative flex items-center gap-1.5 bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs font-semibold text-gray-600 hover:border-sky-300 transition-colors interactive"
+                className="relative flex items-center gap-1.5 bg-white border border-gray-200 rounded-lg px-3 py-2 text-xs font-semibold text-gray-600 hover:border-red-300 transition-colors interactive"
               >
-                <svg className="w-3.5 h-3.5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" /></svg>
+                <svg className="w-3.5 h-3.5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" /></svg>
                 Filters
                 {activeExtraFilterCount > 0 && (
-                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 flex items-center justify-center rounded-full bg-sky-600 text-white text-[9px] font-bold">
+                  <span className="absolute -top-1.5 -right-1.5 w-4 h-4 flex items-center justify-center rounded-full bg-red-600 text-white text-[9px] font-bold">
                     {activeExtraFilterCount}
                   </span>
                 )}
@@ -238,7 +238,7 @@ export default function CategoryPageTemplate({
                           key={c.v}
                           onClick={() => setCondition(c.v as '' | 'NEW' | 'USED')}
                           className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all interactive border ${
-                            condition === c.v ? 'bg-sky-500 text-white border-sky-500' : 'bg-white text-gray-600 border-gray-200 hover:border-sky-200'
+                            condition === c.v ? 'bg-red-500 text-white border-red-500' : 'bg-white text-gray-600 border-gray-200 hover:border-red-200'
                           }`}
                         >{c.l}</button>
                       ))}
@@ -306,7 +306,7 @@ export default function CategoryPageTemplate({
             <p className="text-sm text-gray-400 mt-1">
               {q || subcategory || condition || verifiedOnly ? 'Try adjusting your search or filters.' : `Be the first to post a ${categoryLabel.toLowerCase()} ad!`}
             </p>
-            <Link href="/listings/create" className="mt-4 inline-block bg-sky-600 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-sky-700 transition-colors interactive">
+            <Link href="/listings/create" className="mt-4 inline-block bg-red-600 text-white text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-red-700 transition-colors interactive">
               Post Ad
             </Link>
           </div>
@@ -335,7 +335,7 @@ export default function CategoryPageTemplate({
                       key={p}
                       onClick={() => goToPage(p as number)}
                       className={`w-9 h-9 rounded-lg text-sm font-semibold transition-all interactive ${
-                        p === page ? 'bg-sky-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-sky-200'
+                        p === page ? 'bg-red-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:border-red-200'
                       }`}
                     >{p}</button>
                   )

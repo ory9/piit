@@ -100,7 +100,7 @@ export default function ReviewsPage() {
     return (
         <div className="max-w-4xl mx-auto px-4 py-8 text-center">
         <p className="text-xl font-bold text-gray-800 mb-4">Listing not found</p>
-        <Link href="/listings" className="text-sky-600 hover:underline text-sm">
+        <Link href="/listings" className="text-red-600 hover:underline text-sm">
           Browse listings
         </Link>
       </div>
@@ -125,7 +125,7 @@ export default function ReviewsPage() {
           <h1 className="text-2xl font-black text-gray-900">Customer Reviews</h1>
           <p className="text-sm text-gray-500 mt-1">
             Reviews for{' '}
-            <Link href={`/listings/${id}`} className="text-sky-600 hover:underline font-medium">
+            <Link href={`/listings/${id}`} className="text-red-600 hover:underline font-medium">
               {listing.title}
             </Link>
           </p>
@@ -133,7 +133,7 @@ export default function ReviewsPage() {
         {user && (
           <Link
             href={`/listings/${id}/reviews/write`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-colors shadow-sm"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -189,7 +189,7 @@ export default function ReviewsPage() {
           {user && (
             <Link
               href={`/listings/${id}/reviews/write`}
-              className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white text-sm font-semibold transition-colors"
+              className="mt-4 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-colors"
             >
               Write the first review
             </Link>
@@ -207,8 +207,8 @@ export default function ReviewsPage() {
               onClick={() => { setSort(s); setPage(1); }}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors ${
                 sort === s
-                  ? 'bg-sky-600 text-white'
-                  : 'bg-gray-100 text-gray-600 hover:bg-sky-50 hover:text-sky-700'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-gray-100 text-gray-600 hover:bg-red-50 hover:text-red-700'
               }`}
             >
               {s === 'recent' ? 'Most Recent' : s === 'helpful' ? 'Most Helpful' : s === 'highest' ? 'Highest Rated' : 'Lowest Rated'}
@@ -265,7 +265,7 @@ export default function ReviewsPage() {
                 <button
                   disabled={!user || helpfulLoading === review.id}
                   onClick={() => handleHelpful(review.id)}
-                  className="flex items-center gap-1 text-xs text-gray-500 hover:text-sky-600 transition-colors disabled:opacity-50"
+                  className="flex items-center gap-1 text-xs text-gray-500 hover:text-red-600 transition-colors disabled:opacity-50"
                 >
                   <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905a3.61 3.61 0 01-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
@@ -305,7 +305,7 @@ export default function ReviewsPage() {
       <div className="mt-4 text-center">
         <Link
           href={`/listings/${id}`}
-          className="inline-flex items-center gap-2 text-sm text-sky-600 hover:text-sky-700 font-medium transition-colors"
+          className="inline-flex items-center gap-2 text-sm text-red-600 hover:text-red-700 font-medium transition-colors"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />

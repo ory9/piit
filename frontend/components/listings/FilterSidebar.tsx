@@ -68,12 +68,12 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
       {/* Header – desktop */}
       <div className="hidden md:flex items-center justify-between pb-3 border-b border-gray-100">
         <h2 className="font-extrabold text-gray-900 text-sm flex items-center gap-1.5">
-          <svg className="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" /></svg>
+          <svg className="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z" /></svg>
           Filters
         </h2>
         <button
           onClick={() => { router.push(`/listings?country=${country}`); onClose?.(); }}
-          className="text-xs text-sky-600 hover:text-sky-700 font-semibold transition-colors interactive"
+          className="text-xs text-red-600 hover:text-red-700 font-semibold transition-colors interactive"
         >
           Clear all
         </button>
@@ -151,8 +151,8 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
               onClick={() => update('condition', c.value)}
               className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all interactive border ${
                 params?.get('condition') === c.value || (!params?.get('condition') && c.value === '')
-                  ? 'bg-sky-500 text-white border-sky-500 shadow-sm'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-sky-200 hover:text-sky-600'
+                  ? 'bg-red-500 text-white border-red-500 shadow-sm'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-red-200 hover:text-red-600'
               }`}
             >
               {c.label}
@@ -174,8 +174,8 @@ export function FilterSidebar({ categories, isOpen = false, onClose }: Props) {
               onClick={() => updateMultiple({ priceMin: preset.min, priceMax: preset.max })}
               className={`py-1.5 px-2 rounded-lg text-xs font-medium transition-all interactive border ${
                 activePricePreset?.label === preset.label
-                  ? 'bg-sky-500 text-white border-sky-500 shadow-sm'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-sky-200 hover:text-sky-600'
+                  ? 'bg-red-500 text-white border-red-500 shadow-sm'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-red-200 hover:text-red-600'
               }`}
             >
               {preset.label}

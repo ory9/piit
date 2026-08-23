@@ -71,7 +71,7 @@ export default async function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-r from-indigo-900 via-sky-800 to-fuchsia-900 text-gray-300 px-[1%] md:px-[7%]">
+    <footer className="bg-gradient-to-r from-rose-900 via-red-800 to-fuchsia-900 text-gray-300 px-[1%] md:px-[7%]">
       {/* Main footer content - hidden on mobile, shown on md+ */}
       <div className="hidden md:block">
         <div className="py-6">
@@ -84,7 +84,7 @@ export default async function Footer() {
                   alt="Piitrade — Shop Smart. Shop Trusted."
                   fallback={
                     <>
-                      <div className="w-8 h-8 bg-gradient-to-br from-fuchsia-500 via-sky-500 to-indigo-600 rounded-lg flex items-center justify-center font-black text-white text-sm border border-white/30 shadow-glow">Pi</div>
+                      <div className="w-8 h-8 bg-gradient-to-br from-fuchsia-500 via-red-500 to-rose-600 rounded-lg flex items-center justify-center font-black text-white text-sm border border-white/30 shadow-glow">Pi</div>
                       <div className="flex flex-col leading-none gap-0.5">
                         <span className="font-extrabold text-white text-lg tracking-tight">
                           Piitrade
@@ -110,7 +110,7 @@ export default async function Footer() {
                     target={s.href !== '#' ? '_blank' : undefined}
                     rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
                     aria-label={s.label}
-                    className="w-9 h-9 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-sky-500 hover:text-white flex items-center justify-center text-xs text-gray-300 transition-colors interactive"
+                    className="w-9 h-9 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-red-500 hover:text-white flex items-center justify-center text-xs text-gray-300 transition-colors interactive"
                   >
                     {s.icon}
                   </a>
@@ -122,11 +122,11 @@ export default async function Footer() {
             <div>
               <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide border-b border-white/10 pb-1">Company</h4>
               <ul className="space-y-1.5 text-sm">
-                <li><Link href="/about" className="text-gray-300 hover:text-sky-200 transition-colors">About Us</Link></li>
-                <li><Link href="/advertising" className="text-gray-300 hover:text-sky-200 transition-colors">Advertising</Link></li>
-                <li><Link href="/blog" className="text-gray-300 hover:text-sky-200 transition-colors">Blog</Link></li>
-                <li><Link href="/careers" className="text-gray-300 hover:text-sky-200 transition-colors">Careers</Link></li>
-                <li><Link href="/press" className="text-gray-300 hover:text-sky-200 transition-colors">Press</Link></li>
+                <li><Link href="/about" className="text-gray-300 hover:text-red-200 transition-colors">About Us</Link></li>
+                <li><Link href="/advertising" className="text-gray-300 hover:text-red-200 transition-colors">Advertising</Link></li>
+                <li><Link href="/blog" className="text-gray-300 hover:text-red-200 transition-colors">Blog</Link></li>
+                <li><Link href="/careers" className="text-gray-300 hover:text-red-200 transition-colors">Careers</Link></li>
+                <li><Link href="/press" className="text-gray-300 hover:text-red-200 transition-colors">Press</Link></li>
               </ul>
             </div>
 
@@ -134,11 +134,11 @@ export default async function Footer() {
             <div>
               <h4 className="text-white font-bold mb-2 text-sm uppercase tracking-wide border-b border-white/10 pb-1">Support</h4>
               <ul className="space-y-1.5 text-sm">
-                <li><Link href="/help" className="text-gray-300 hover:text-sky-200 transition-colors">Help Center</Link></li>
-                <li><a href="mailto:support@piitrade.com" className="text-gray-300 hover:text-sky-200 transition-colors">Contact Us</a></li>
-                <li><Link href="/safety" className="text-gray-300 hover:text-sky-200 transition-colors">Safety Tips</Link></li>
-                <li><Link href="/privacy" className="text-gray-300 hover:text-sky-200 transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-gray-300 hover:text-sky-200 transition-colors">Terms of Service</Link></li>
+                <li><Link href="/help" className="text-gray-300 hover:text-red-200 transition-colors">Help Center</Link></li>
+                <li><a href="mailto:support@piitrade.com" className="text-gray-300 hover:text-red-200 transition-colors">Contact Us</a></li>
+                <li><Link href="/safety" className="text-gray-300 hover:text-red-200 transition-colors">Safety Tips</Link></li>
+                <li><Link href="/privacy" className="text-gray-300 hover:text-red-200 transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/terms" className="text-gray-300 hover:text-red-200 transition-colors">Terms of Service</Link></li>
               </ul>
             </div>
           </div>
@@ -148,7 +148,7 @@ export default async function Footer() {
       {/* Compact mobile footer - shown only below md */}
       <div className="md:hidden py-6">
         <Link href="/" className="flex items-center justify-center gap-2 mb-4 hover:opacity-80 transition-opacity">
-          <div className="w-7 h-7 bg-gradient-to-br from-fuchsia-500 via-sky-500 to-indigo-600 rounded-lg flex items-center justify-center font-black text-white text-xs border border-white/30 shadow-glow">Pi</div>
+          <div className="w-7 h-7 bg-gradient-to-br from-fuchsia-500 via-red-500 to-rose-600 rounded-lg flex items-center justify-center font-black text-white text-xs border border-white/30 shadow-glow">Pi</div>
           <span className="font-extrabold text-white text-base tracking-tight">
             Piitrade
           </span>
@@ -170,7 +170,7 @@ export default async function Footer() {
               target={s.href !== '#' ? '_blank' : undefined}
               rel={s.href !== '#' ? 'noopener noreferrer' : undefined}
               aria-label={s.label}
-              className="w-9 h-9 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-sky-500 flex items-center justify-center text-xs text-gray-300 transition-colors interactive"
+              className="w-9 h-9 rounded-lg bg-white/10 hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-red-500 flex items-center justify-center text-xs text-gray-300 transition-colors interactive"
             >
               {s.icon}
             </a>

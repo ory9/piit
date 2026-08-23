@@ -47,7 +47,7 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
   };
 
   return (
-    <div className="group bg-white rounded-lg xs:rounded-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-sky-100">
+    <div className="group bg-white rounded-lg xs:rounded-xl border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1 hover:border-red-100">
       {/* Image container — fixed 4:3 aspect ratio */}
       <div className="relative overflow-hidden bg-gray-50 rounded-t-lg xs:rounded-t-xl aspect-[4/3]">
         <Link href={`/listings/${listing.id}`} className="block absolute inset-0" tabIndex={-1}>
@@ -97,7 +97,7 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
               </span>
             )}
             {listing.user?.isVerified && (
-              <span className="badge text-[9px] xs:text-[10px] shadow-sm bg-sky-500 text-white">
+              <span className="badge text-[9px] xs:text-[10px] shadow-sm bg-red-500 text-white">
                 <svg className="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                   <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
@@ -124,7 +124,7 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
 
       {/* Content */}
       <Link href={`/listings/${listing.id}`} className="block p-3 xs:p-3.5">
-        <h3 className="font-bold text-gray-900 text-xs xs:text-sm leading-tight hover:text-sky-600 transition-colors truncate" title={listing.title}>
+        <h3 className="font-bold text-gray-900 text-xs xs:text-sm leading-tight hover:text-red-600 transition-colors truncate" title={listing.title}>
           {listing.title}
         </h3>
         {listing.description && (
@@ -138,7 +138,7 @@ export function ListingCard({ listing, showFavorite = true, cleanImage = false }
             amount={listing.price}
             currency={listing.currency}
             displayCurrency={displayCurrency}
-            className="text-sky-600 font-extrabold text-sm xs:text-base leading-none"
+            className="text-red-600 font-extrabold text-sm xs:text-base leading-none"
           />
           {listing.originalPrice != null && listing.originalPrice > listing.price && (
             <CurrencyDisplay

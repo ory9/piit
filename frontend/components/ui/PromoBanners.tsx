@@ -30,7 +30,7 @@ const banners: Banner[] = [
     href: '/listings?location=Jinja',
     emoji: '🌊',
     isoCode: 'UG',
-    bgGradient: 'from-sky-500 to-cyan-600',
+    bgGradient: 'from-red-500 to-rose-600',
     cities: 'Eastern Region',
   },
   {

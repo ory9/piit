@@ -382,7 +382,7 @@ export default function AdminCategoriesPage() {
             aria-label="Country"
             value={selectedCountry}
             onChange={(e) => setSelectedCountry(e.target.value as typeof ALL_COUNTRIES[number])}
-            className="border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
           >
             {ALL_COUNTRIES.map((c) => (
               <option key={c} value={c}>{COUNTRY_LABELS[c]}</option>
@@ -390,7 +390,7 @@ export default function AdminCategoriesPage() {
           </select>
           <button
             onClick={() => { setShowAddForm(!showAddForm); setAddForm(emptyForm); }}
-            className="bg-sky-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors"
+            className="bg-red-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors"
           >
             {showAddForm ? 'Cancel' : 'Add Category'}
           </button>
@@ -428,7 +428,7 @@ export default function AdminCategoriesPage() {
             id="category-sort-select"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="border border-gray-300 rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-sky-500"
+            className="border border-gray-300 rounded-lg px-2 py-1 text-xs focus:outline-none focus:ring-2 focus:ring-red-500"
           >
             <option value="name">Name (A–Z)</option>
             <option value="countAsc">Listings (Low → High)</option>
@@ -438,7 +438,7 @@ export default function AdminCategoriesPage() {
       </div>
 
       {populateMessage && (
-        <div className="mb-3 rounded-lg border border-sky-200 bg-sky-50 px-3 py-2 text-xs text-sky-700">
+        <div className="mb-3 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
           {populateMessage}
         </div>
       )}
@@ -454,7 +454,7 @@ export default function AdminCategoriesPage() {
                 value={addForm.name}
                 onChange={(e) => handleAddNameChange(e.target.value)}
                 placeholder="Category name"
-                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
             <div>
@@ -464,7 +464,7 @@ export default function AdminCategoriesPage() {
                 value={addForm.slug}
                 onChange={(e) => setAddForm((prev) => ({ ...prev, slug: e.target.value }))}
                 placeholder="category-slug"
-                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
             <div>
@@ -474,7 +474,7 @@ export default function AdminCategoriesPage() {
                 value={addForm.icon}
                 onChange={(e) => setAddForm((prev) => ({ ...prev, icon: e.target.value }))}
                 placeholder="🏷️"
-                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               />
             </div>
             <div>
@@ -482,7 +482,7 @@ export default function AdminCategoriesPage() {
               <select
                 value={addForm.parentId}
                 onChange={(e) => setAddForm((prev) => ({ ...prev, parentId: e.target.value }))}
-                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                className="w-full border border-gray-300 rounded-lg px-2.5 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
               >
                 <option value="">None</option>
                 {categories.map((c) => (
@@ -495,7 +495,7 @@ export default function AdminCategoriesPage() {
             <button
               onClick={handleAddSubmit}
               disabled={addLoading || !addForm.name.trim()}
-              className="bg-sky-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-sky-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-red-600 text-white px-3 py-1.5 rounded-lg text-sm font-medium hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               {addLoading ? 'Creating...' : 'Create Category'}
             </button>
@@ -534,13 +534,13 @@ export default function AdminCategoriesPage() {
             )}
             {visibleCategories.map((cat) =>
               editingId === cat.id ? (
-                <tr key={cat.id} className="bg-sky-50">
+                <tr key={cat.id} className="bg-red-50">
                   <td className="px-3 sm:px-4 py-2">
                     <input
                       type="text"
                       value={editForm.name}
                       onChange={(e) => handleEditNameChange(e.target.value)}
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   </td>
                   <td className="px-3 sm:px-4 py-2">
@@ -548,7 +548,7 @@ export default function AdminCategoriesPage() {
                       type="text"
                       value={editForm.slug}
                       onChange={(e) => setEditForm((prev) => ({ ...prev, slug: e.target.value }))}
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   </td>
                   <td className="px-3 sm:px-4 py-2">
@@ -556,14 +556,14 @@ export default function AdminCategoriesPage() {
                       type="text"
                       value={editForm.icon}
                       onChange={(e) => setEditForm((prev) => ({ ...prev, icon: e.target.value }))}
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     />
                   </td>
                   <td className="px-3 sm:px-4 py-2">
                     <select
                       value={editForm.parentId}
                       onChange={(e) => setEditForm((prev) => ({ ...prev, parentId: e.target.value }))}
-                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500"
+                      className="w-full border border-gray-300 rounded px-2 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                     >
                       <option value="">None</option>
                       {categories.filter((c) => c.id !== cat.id).map((c) => (
@@ -630,7 +630,7 @@ export default function AdminCategoriesPage() {
                     <div className="flex gap-1.5 flex-wrap">
                       <button
                         onClick={() => startEdit(cat)}
-                        className="text-xs px-2.5 py-1 rounded font-medium bg-sky-500 text-white hover:bg-sky-600 transition-colors"
+                        className="text-xs px-2.5 py-1 rounded font-medium bg-red-500 text-white hover:bg-red-600 transition-colors"
                       >
                         Edit
                       </button>

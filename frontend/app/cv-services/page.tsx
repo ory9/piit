@@ -73,7 +73,7 @@ export default async function CVServicesPage() {
       />
 
       {/* Hero */}
-      <div className="overflow-hidden rounded-3xl bg-gradient-to-r from-sky-700 via-sky-600 to-blue-500 px-5 py-4 text-white shadow-xl mb-4">
+      <div className="overflow-hidden rounded-3xl bg-gradient-to-r from-red-700 via-red-600 to-red-500 px-5 py-4 text-white shadow-xl mb-4">
         <p className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-white/85">
           Piitrade CV Services
         </p>
@@ -86,7 +86,7 @@ export default async function CVServicesPage() {
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
             href="/cv-generator"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-sky-700 rounded-xl text-sm font-bold hover:bg-sky-50 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-red-700 rounded-xl text-sm font-bold hover:bg-red-50 transition-colors shadow-sm"
           >
             📄 Build My CV
           </Link>
@@ -160,7 +160,7 @@ export default async function CVServicesPage() {
                   <p className="text-xs text-gray-500 leading-relaxed">{svc.desc}</p>
                 </div>
               </div>
-              <div className="mt-3 flex items-center justify-end text-xs font-semibold text-sky-600 group-hover:gap-1.5 transition-all gap-1">
+              <div className="mt-3 flex items-center justify-end text-xs font-semibold text-red-600 group-hover:gap-1.5 transition-all gap-1">
                 Learn more <span className="group-hover:translate-x-0.5 transition-transform">→</span>
               </div>
             </Link>
@@ -177,7 +177,7 @@ export default async function CVServicesPage() {
             <Link
               key={`${link.href}-${link.title}`}
               href={link.href}
-              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-2.5 hover:shadow-md hover:border-sky-200 transition-all text-center group"
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-2.5 hover:shadow-md hover:border-red-200 transition-all text-center group"
             >
               <div className="text-2xl mb-1.5 group-hover:scale-110 transition-transform inline-block">
                 {link.icon}

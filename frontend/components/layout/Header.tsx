@@ -104,8 +104,8 @@ function MobileCountryPicker({ onClose }: { onClose: () => void }) {
           onClick={() => { setCountry(opt.value); onClose(); router.push('/country/' + SLUGS[opt.value]); }}
           className={`flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl border-2 transition-all text-sm font-semibold ${
             opt.value === country
-              ? 'border-sky-500 bg-sky-50 text-sky-700'
-              : 'border-gray-200 text-gray-600 hover:border-sky-200 hover:bg-sky-50/60'
+              ? 'border-red-500 bg-red-50 text-red-700'
+              : 'border-gray-200 text-gray-600 hover:border-red-200 hover:bg-red-50/60'
           }`}
         >
           {/* SVG flag — not emoji */}
@@ -157,7 +157,7 @@ export default function Header() {
   useEffect(() => {
     if (!headerTheme || typeof window === 'undefined') return;
     const themeMap: Record<string, { primary: string; dark: string; bg: string; text: string; textOn: string }> = {
-      sky:      { primary: '#0EA5E9', dark: '#0284c7', bg: '#e0f2fe', text: '#0f172a', textOn: '#ffffff' },
+      red:      { primary: '#B7291B', dark: '#7A1C15', bg: '#FCE4E1', text: '#1a1310', textOn: '#ffffff' },
       white:    { primary: '#64748b', dark: '#475569', bg: '#f1f5f9', text: '#111827', textOn: '#ffffff' },
       dark:     { primary: '#38bdf8', dark: '#0ea5e9', bg: '#0f172a', text: '#e2e8f0', textOn: '#0f172a' },
       emerald:  { primary: '#10b981', dark: '#059669', bg: '#ecfdf5', text: '#064e3b', textOn: '#ffffff' },
@@ -253,7 +253,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-2xl border-b border-sky-100/80 shadow-[0_4px_32px_-4px_rgba(14,165,233,0.18),0_2px_8px_-2px_rgba(99,102,241,0.12)]' : 'shadow-[0_2px_24px_0_rgba(99,102,241,0.35)]'}`}
+        className={`z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-2xl border-b border-red-100/80 shadow-[0_4px_32px_-4px_rgba(183,41,27,0.18),0_2px_8px_-2px_rgba(122,28,21,0.12)]' : 'shadow-[0_2px_24px_0_rgba(122,28,21,0.35)]'}`}
         style={scrolled ? undefined : { background: 'linear-gradient(135deg, var(--theme-primary-dark) 0%, var(--theme-primary) 50%, var(--theme-primary-dark) 100%)' }}
       >
         <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center gap-1.5 sm:gap-2 md:gap-3 h-14 sm:h-16">
@@ -466,7 +466,7 @@ export default function Header() {
                               key={notif.id}
                               href="/notifications"
                               onClick={() => setNotifOpen(false)}
-                              className={`flex items-start gap-3 px-4 py-3 hover:bg-sky-50 transition-colors ${!notif.read ? 'bg-sky-50/60' : ''}`}
+                              className={`flex items-start gap-3 px-4 py-3 hover:bg-red-50 transition-colors ${!notif.read ? 'bg-red-50/60' : ''}`}
                             >
                               <span aria-hidden="true" style={{ fontSize: "1.5rem", lineHeight: 1, flexShrink: 0, marginTop: "0.125rem", display: "inline-block" }}>
                                 {NOTIF_ICONS[notif.type] ?? '🔔'}
@@ -476,13 +476,13 @@ export default function Header() {
                                 <p className="text-[10px] text-gray-500 truncate mt-0.5">{notif.message}</p>
                                 <p className="text-[9px] text-gray-400 mt-0.5">{relativeTime(notif.createdAt)}</p>
                               </div>
-                              {!notif.read && <span className="w-2 h-2 rounded-full bg-sky-500 shrink-0 mt-1.5" aria-hidden="true" />}
+                              {!notif.read && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 mt-1.5" aria-hidden="true" />}
                             </Link>
                           ))}
                         </div>
                       )}
                     </div>
-                    <Link href="/notifications" className="block text-center text-xs text-sky-600 hover:text-sky-800 py-3 border-t border-gray-100 font-semibold hover:bg-sky-50 transition-colors" onClick={() => setNotifOpen(false)}>
+                    <Link href="/notifications" className="block text-center text-xs text-red-600 hover:text-red-800 py-3 border-t border-gray-100 font-semibold hover:bg-red-50 transition-colors" onClick={() => setNotifOpen(false)}>
                       View All Notifications →
                     </Link>
                   </div>
@@ -577,23 +577,23 @@ export default function Header() {
                     </div>
                     <div className="py-1.5">
                       <Link href="/dashboard" className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-[var(--theme-bg-light)] hover:text-[var(--theme-primary-dark)] transition-colors font-medium" onClick={() => setProfileDropOpen(false)}>
-                        <svg className="w-4 h-4 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                        <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                         Dashboard
                       </Link>
                       <Link href="/profile" className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-[var(--theme-bg-light)] hover:text-[var(--theme-primary-dark)] transition-colors" onClick={() => setProfileDropOpen(false)}>
-                        <svg className="w-4 h-4 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+                        <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
                         My Profile
                       </Link>
                       <Link href="/profile/listings" className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-[var(--theme-bg-light)] hover:text-[var(--theme-primary-dark)] transition-colors" onClick={() => setProfileDropOpen(false)}>
-                        <svg className="w-4 h-4 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
+                        <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" /></svg>
                         My Listings
                       </Link>
                       <Link href="/profile/orders" className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-[var(--theme-bg-light)] hover:text-[var(--theme-primary-dark)] transition-colors" onClick={() => setProfileDropOpen(false)}>
-                        <svg className="w-4 h-4 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+                        <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
                         My Orders
                       </Link>
                       <Link href="/profile/favorites" className="flex items-center gap-2.5 px-4 py-2.5 text-sm text-gray-700 hover:bg-[var(--theme-bg-light)] hover:text-[var(--theme-primary-dark)] transition-colors" onClick={() => setProfileDropOpen(false)}>
-                        <svg className="w-4 h-4 shrink-0 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                        <svg className="w-4 h-4 shrink-0 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
                         Saved Items
                       </Link>
                       {user.role === 'ADMIN' && (
@@ -624,7 +624,7 @@ export default function Header() {
           </nav>
         </div>
 
-        <div className={`sm:hidden border-t px-3 py-2 ${scrolled ? 'border-sky-100 bg-white' : 'border-white/10 bg-[var(--theme-primary-dark)]/40 backdrop-blur-sm'}`}>
+        <div className={`sm:hidden border-t px-3 py-2 ${scrolled ? 'border-red-100 bg-white' : 'border-white/10 bg-[var(--theme-primary-dark)]/40 backdrop-blur-sm'}`}>
           <HeaderSearch variant="mobile" scrolled={scrolled} />
         </div>
 

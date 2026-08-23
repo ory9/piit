@@ -196,8 +196,8 @@ export default function HeaderSearch({ variant, scrolled }: HeaderSearchProps) {
         <div
           className={
             isDesktop
-              ? `flex w-full rounded-xl overflow-hidden ring-2 transition-all shadow-lg ${scrolled ? 'ring-sky-200 focus-within:ring-[var(--theme-primary)]' : 'ring-white/30 focus-within:ring-white/70'}`
-              : `flex w-full rounded-lg overflow-hidden ring-2 transition-all ${scrolled ? 'ring-sky-200 focus-within:ring-[var(--theme-primary)]' : 'ring-white/20 focus-within:ring-white/70'}`
+              ? `flex w-full rounded-xl overflow-hidden ring-2 transition-all shadow-lg ${scrolled ? 'ring-red-200 focus-within:ring-[var(--theme-primary)]' : 'ring-white/30 focus-within:ring-white/70'}`
+              : `flex w-full rounded-lg overflow-hidden ring-2 transition-all ${scrolled ? 'ring-red-200 focus-within:ring-[var(--theme-primary)]' : 'ring-white/20 focus-within:ring-white/70'}`
           }
         >
           {isDesktop && (
@@ -267,7 +267,7 @@ export default function HeaderSearch({ variant, scrolled }: HeaderSearchProps) {
                     type="button"
                     onMouseEnter={() => setActiveIndex(i)}
                     onClick={() => applySuggestion(s)}
-                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm text-left transition-colors ${i === activeIndex ? 'bg-sky-50 text-sky-700' : 'text-gray-700 hover:bg-gray-50'}`}
+                    className={`w-full flex items-center gap-2.5 px-3 py-2 text-sm text-left transition-colors ${i === activeIndex ? 'bg-red-50 text-red-700' : 'text-gray-700 hover:bg-gray-50'}`}
                   >
                     <span aria-hidden="true" className="text-xs shrink-0">{suggestionIcon(s)}</span>
                     <span className="truncate">{s.label}</span>
