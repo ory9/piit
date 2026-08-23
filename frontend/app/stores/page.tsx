@@ -182,28 +182,26 @@ export default function StoresPage() {
   return (
     <div className="min-h-screen bg-gray-50/90">
 
-      {/* Hero */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-red-600 via-red-700 to-rose-800 py-10 px-4">
+      {/* Hero — compact banner, kept slim so the partners grid sits higher on the page */}
+      <div className="relative overflow-hidden bg-gradient-to-r from-red-600 via-red-700 to-rose-800 py-4 px-4">
         <div
           className="absolute inset-0 opacity-10 pointer-events-none"
           style={{ backgroundImage: 'radial-gradient(circle at 20% 50%,#ffffff22 0%,transparent 50%)' }}
         />
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 text-white/90 text-sm font-semibold mb-4">
+        <div className="relative max-w-4xl mx-auto flex items-center justify-center gap-3 flex-wrap text-center">
+          <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-white/90 text-xs font-semibold shrink-0">
             🤝 Partners &amp; Stores
-          </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-2">Our Partners</h1>
-          <p className="text-red-100 text-base max-w-2xl mx-auto">
-            Verified partners and stores approved by Piitrade across Uganda.
-          </p>
+          </span>
+          <h1 className="text-lg md:text-xl font-extrabold text-white leading-tight">Our Partners</h1>
+          <span className="hidden sm:inline text-red-100/90 text-xs">— Verified partners and stores approved by Piitrade across Uganda.</span>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8 space-y-10">
+      <div className="max-w-7xl mx-auto px-4 py-6 space-y-8">
 
         {/* Partners Wall */}
         <section>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
             <div>
               <h2 className="text-2xl font-extrabold text-gray-900">🤝 Our Partners</h2>
               <p className="text-sm text-gray-500 mt-0.5">
